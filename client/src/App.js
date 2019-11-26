@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Login from './containers/Login'
+import Register from './containers/Register'
+import PostList from './containers/PostList'
+import Post from './containers/Post'
 
 const App = () => {
-  const [name, setName] = useState('')
-  useEffect(() => {
-    const getName = async () => {
-      const res = await axios.get('/api/getName');
-      const name = res.data.name
-      setName(name)
-    }
-    getName()
-  }, [])
-  return <h1>Ton nom est : { name }</h1>
+  return (
+    <Router>
+      <Switch>
+        <Route exact path='/' component={ Login } />
+        <Route path='/login' component={ Login } />
+        <Route path='/register' component={ Register } />
+        <Route path='/post' component={ Post } />
+        <Route path='/postList' component={ PostList } />
+      </Switch>
+    </Router>
+  )
 }
 
 export default App
