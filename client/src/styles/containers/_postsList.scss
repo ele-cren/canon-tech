@@ -1,0 +1,25 @@
+.PostsList__container {
+border: 1px solid black;
+height: 100%;
+display: flex;
+
+}
+
+.PostsList__main-container {
+  max-width: 1366px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+}
+
+.PostsList__data-container {
+  display: flex;
+}
+.PostsList__filters-container {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  box-shadow: $boxShadow;
+}
