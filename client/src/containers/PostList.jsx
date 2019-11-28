@@ -1,9 +1,7 @@
-import React from 'react'
+import React, { Component } from "react";
 
 const PostList = () => {
-    return (
-        <h1>PostList Page</h1>
-    )
-}
+  return <h1>PostList Page</h1>;
+};
 
-export default PostList
+export default PostList;
