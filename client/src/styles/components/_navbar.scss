@@ -1,6 +1,5 @@
 .Navbar__container {
   height: 65px;
-  margin: auto;
   box-shadow: $boxShadow;
   background-color: $white;
 }
@@ -8,6 +7,7 @@
 .Navbar__main-container {
   max-width: 1366px;
   display: flex;
+  margin: auto;
   height: 100%;
   justify-content: space-between;
 }
