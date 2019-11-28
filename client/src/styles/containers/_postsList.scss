@@ -1,8 +1,6 @@
 .PostsList__container {
-border: 1px solid black;
-height: 100%;
-display: flex;
-
+  border: 1px solid black;
+  display: flex;
 }
 
 .PostsList__main-container {
@@ -17,7 +15,7 @@ display: flex;
   display: flex;
 }
 .PostsList__filters-container {
-  width: 300px;
+  width: 200px;
   display: flex;
   flex-direction: column;
   background-color: $white;
