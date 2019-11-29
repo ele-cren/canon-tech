@@ -73,7 +73,16 @@
   }
 }
 
-
-
-
-
+.Navbar__menu-mobile {
+  position: absolute;
+  right: 0;
+  background-color: rgba(134, 157, 216, 0.9);
+  color: $lightGrey;
+  box-shadow: $boxShadow;
+  margin-right: 10px;
+  width: 150px;
+  li {
+    list-style-type: none;
+    margin: 5px 0 5px 5px;
+  }
+}
