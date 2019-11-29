@@ -2,56 +2,78 @@
   height: 65px;
   box-shadow: $boxShadow;
   background-color: $white;
+  .Navbar__main-container {
+    max-width: 1366px;
+    display: flex;
+    margin: auto;
+    height: 100%;
+    justify-content: space-between;
+    .Navbar__logo {
+      height: 100%;
+      width: auto;
+      margin: 0 0 0 10px;
+    }
+    .Navbar__btn-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 100%;
+      .Navbar__btn {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        width: 125px;
+        height: 35px;
+        border-radius: 50px;
+        box-shadow: $boxShadow;
+        border: 0;
+        margin: 0 5px 0 5px;
+      }
+      .Navbar__btn-blue1 {
+        color: $white;
+        background-color: $blue1;
+        border: 1px solid $blue1;
+      }
+      
+      .Navbar__btn-blue2 {
+        color: $white;
+        background-color: $blue2;
+        border: 1px solid $blue2;
+      }
+      
+      .Navbar__btn-blue1:hover {
+        color: $blue1;
+        background-color: $white;
+        border: 1px solid $blue1;
+      }
+      
+      .Navbar__btn-blue2:hover {
+        color: $blue2;
+        background-color: $white;
+        border: 1px solid $blue2;
+      }
+      
+      .Navbar__bars-btn {
+        border: 1px solid black;
+        border: none;
+        box-shadow: $boxShadow;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        font-size: 20px;
+        margin-right: 10px;
+        background-color: $lightBlue1;
+        color: $lightGrey;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    }
+  }
 }
 
-.Navbar__main-container {
-  max-width: 1366px;
-  display: flex;
-  margin: auto;
-  height: 100%;
-  justify-content: space-between;
-}
 
-.Navbar__logo {
-  height: 100%;
-  width: auto;
-  margin: 0 0 0 10px;
-}
 
-.Navbar__btn-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.Navbar__btn {
-  width: 120px;
-  height: 30px;
-  border-radius: 50px;
-  box-shadow: $boxShadow;
-  border: 0;
-  margin: 0 5px 0 5px;
-}
 
-.Navbar__btn-blue1 {
-  color: $lightGrey;
-  background-color: $blue1;
-}
-
-.Navbar__btn-blue2 {
-  color: $lightGrey;
-  background-color: $blue2;
-}
-
-.Navbar__bars-btn {
-  border: none;
-  box-shadow: $boxShadow;
-  width: 40px;
-  height: 40px;
-  text-align: center;
-  font-size: 20px;
-  margin-right: 10px;
-  background-color: $lightBlue1;
-  color: $lightGrey;
-  border-radius: 5px;
-}

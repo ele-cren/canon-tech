@@ -5,9 +5,18 @@
 
 html, body {
   background-color: $lightGrey;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.font-roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
 }
 
 .hidden {
-  display: none;
+  display: none !important;
   visibility: hidden;
 }

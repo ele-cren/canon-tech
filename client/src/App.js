@@ -10,8 +10,8 @@ import "./styles/main.scss";
 const App = () => {
   return (
     <div className="TechCanon">
-      <Navbar />
       <Router>
+        <Navbar />
         <Switch>
           <Route exact path="/" component={Login} />
           <Route path="/login" component={Login} />
