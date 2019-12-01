@@ -74,6 +74,7 @@
 }
 
 .Navbar__menu-mobile {
+  height: auto;
   position: absolute;
   right: 0;
   background-color: rgba(134, 157, 216, 0.9);
@@ -84,5 +85,13 @@
   li {
     list-style-type: none;
     margin: 5px 0 5px 5px;
+  }
+  .Navbar__menu-link {
+    text-decoration: none;
+    color: $lightGrey;
+  }
+  .Navbar__menu-link:hover {
+    text-decoration: none;
+    color: $blue2;
   }
 }
