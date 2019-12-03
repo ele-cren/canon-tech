@@ -1,0 +1,17 @@
+.FormSeparator__container {
+    margin-top: 10px;
+    width: 100%;
+    max-width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    hr {
+        width: 100%;
+    }
+    .FormSeparator__left-hr {
+        margin-right: 20px;
+    }
+    .FormSeparator__right-hr {
+        margin-left: 20px;
+    }
+}

@@ -1,0 +1,13 @@
+.Login__container {
+    max-width: 1366px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .Login__title {
+        font-size: 24px;
+        margin-top: 15px;
+        font-weight: normal;
+        text-align: center;
+    }
+}

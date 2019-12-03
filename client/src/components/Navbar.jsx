@@ -5,7 +5,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import classNames from 'classnames'
 
-const Navbar = () => {
+const Navbar = (props) => {
   const [isMobile, setMobile] = useState(false)
   const [isMenuOpened, setMenu] = useState(false)
   const [width, setWidth] = useState(0)
@@ -37,22 +37,25 @@ const Navbar = () => {
     setWidth(window.innerWidth)
   }
 
+  const isRegister = window.location.pathname === '/register'
+
   return (
     <>
       <div className="Navbar__container">
         <div className="Navbar__main-container">
           <img className="Navbar__logo" src={Logo} alt="Logo" />
           <nav className="Navbar__btn-container">
-            <Link to="/register" className={classNames('Navbar__btn', 'Navbar__btn-blue1', { hidden: isMobile })}>Inscription</Link>
-            <Link to="/login" className={classNames('Navbar__btn', 'Navbar__btn-blue2', { hidden: isMobile })}>Connexion</Link>
+
+            {isRegister ? <Link to="/register" className={classNames('Navbar__btn', 'Navbar__btn-blue1', { hidden: isMobile })}>Inscription</Link> : ''}
+            {!isRegister ? <Link to="/login" className={classNames('Navbar__btn', 'Navbar__btn-blue2', { hidden: isMobile })}>Connexion</Link> : ''}
             <button onClick={() => setMenu(!isMenuOpened)} className={classNames('Navbar__bars-btn', { hidden: !isMobile })}><FontAwesomeIcon icon={faBars} /></button>
           </nav>
         </div>
       </div>
       <nav className={classNames('Navbar__menu-mobile', { hidden: !isMenuOpened })}>
         <ul>
-          <li><Link onClick={() => setMenu(false)} className="Navbar__menu-link" to="/register">Inscription</Link></li>
-          <li><Link onClick={() => setMenu(false)} className="Navbar__menu-link" to="/login">Connexion</Link></li>
+          {!isRegister ? <li><Link onClick={() => setMenu(false)} className="Navbar__menu-link" to="/register">Inscription</Link></li> : ''}
+          {isRegister ? <li><Link onClick={() => setMenu(false)} className="Navbar__menu-link" to="/login">Connexion</Link></li> : ''}
         </ul>
       </nav>
     </>
