@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import Logo from '../assets/pictures/techCanonLogo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import classNames from 'classnames'
 
-const Navbar = (props) => {
+const Navbar = () => {
   const [isMobile, setMobile] = useState(false)
   const [isMenuOpened, setMenu] = useState(false)
   const [width, setWidth] = useState(0)
@@ -37,7 +37,8 @@ const Navbar = (props) => {
     setWidth(window.innerWidth)
   }
 
-  const isRegister = props.path === '/register'
+  const pathName = useLocation().pathname
+  const isRegister = pathName === '/register'
 
   return (
     <>

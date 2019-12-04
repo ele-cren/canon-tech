@@ -1,12 +1,8 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
 
-const Register = (props) => {
+const Register = () => {
   return (
-    <>
-      <Navbar path={props.location.pathname} />
-      <h1>Register Page</h1>
-    </>
+    <h1>Register Page</h1>
   )
 }
 
