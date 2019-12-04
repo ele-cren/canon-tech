@@ -13,6 +13,16 @@
     height: 30px;
     padding-left: 5px;
   }
+  .LoginForm__forgot-container {
+    font-size: 12px;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5px;
+    .LoginForm__forgot-text {
+      text-decoration: none;
+      color: $blue1;
+    }
+  }
   .LoginForm__btn-container {
     width: 100%;
     display: flex;
@@ -30,5 +40,26 @@
     font-size: 16px;
     height: 40px;
     width: 100%;
+    cursor: pointer;
+  }
+  .LoginForm__connect-btn:hover {
+    background-color: #1f3b4e;
+  }
+}
+
+.LoginForm__register-container {
+  background-color: $white;
+  box-shadow: $boxShadow;
+  font-size: 12px;
+  margin-top: 25px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 350px;
+  .LoginForm__register-txt {
+    color: $blue1;
+    text-decoration: none;
   }
 }

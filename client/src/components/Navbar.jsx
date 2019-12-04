@@ -39,6 +39,7 @@ const Navbar = () => {
 
   const pathName = useLocation().pathname
   const isRegister = pathName === '/register'
+  const isLogin = pathName === '/' || pathName === '/login'
 
   return (
     <>
@@ -47,16 +48,16 @@ const Navbar = () => {
           <img className="Navbar__logo" src={Logo} alt="Logo" />
           <nav className="Navbar__btn-container">
 
-            {!isRegister ? <Link to="/register" className={classNames('Navbar__btn', 'Navbar__btn-blue1', { hidden: isMobile })}>Inscription</Link> : ''}
-            {isRegister ? <Link to="/login" className={classNames('Navbar__btn', 'Navbar__btn-blue2', { hidden: isMobile })}>Connexion</Link> : ''}
+            {isLogin || (!isRegister && !isLogin) ? <Link to="/register" className={classNames('Navbar__btn', 'Navbar__btn-blue1', { hidden: isMobile })}>Inscription</Link> : ''}
+            {isRegister || (!isLogin && !isRegister) ? <Link to="/login" className={classNames('Navbar__btn', 'Navbar__btn-blue2', { hidden: isMobile })}>Connexion</Link> : ''}
             <button onClick={() => setMenu(!isMenuOpened)} className={classNames('Navbar__bars-btn', { hidden: !isMobile })}><FontAwesomeIcon icon={faBars} /></button>
           </nav>
         </div>
       </div>
       <nav className={classNames('Navbar__menu-mobile', { hidden: !isMenuOpened })}>
         <ul>
-          {!isRegister ? <li><Link onClick={() => setMenu(false)} className="Navbar__menu-link" to="/register">Inscription</Link></li> : ''}
-          {isRegister ? <li><Link onClick={() => setMenu(false)} className="Navbar__menu-link" to="/login">Connexion</Link></li> : ''}
+          {isLogin || (!isLogin && !isRegister) ? <li><Link onClick={() => setMenu(false)} className="Navbar__menu-link" to="/register">Inscription</Link></li> : ''}
+          {isRegister || (!isLogin && !isRegister) ? <li><Link onClick={() => setMenu(false)} className="Navbar__menu-link" to="/login">Connexion</Link></li> : ''}
         </ul>
       </nav>
     </>
