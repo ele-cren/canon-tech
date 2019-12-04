@@ -4,7 +4,7 @@ const FormSeparator = () => {
     return (
         <div className="FormSeparator__container">
             <hr className="FormSeparator__left-hr" />
-            <span>ou</span>
+            <span className="FormSeparator__txt font-roboto">ou</span>
             <hr className="FormSeparator__right-hr" />
         </div>
     )
