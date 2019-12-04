@@ -4,14 +4,14 @@ import Login from "./containers/Login";
 import Register from "./containers/Register";
 import PostsList from "./containers/PostsList";
 import Post from "./containers/Post";
-import Navbar from "./components/Navbar";
 import "./styles/main.scss";
 
-const App = () => {
+const App = (props) => {
+  console.log(props)
+  console.log(window.location.pathname)
   return (
     <div className="TechCanon">
       <Router>
-        <Navbar />
         <Switch>
           <Route exact path="/" component={Login} />
           <Route path="/login" component={Login} />

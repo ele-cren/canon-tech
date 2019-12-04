@@ -1,9 +1,13 @@
 import React from 'react'
+import Navbar from '../components/Navbar'
 
-const Post = () => {
-    return (
-        <h1>Post Page</h1>
-    )
+const Post = (props) => {
+  return (
+    <>
+      <Navbar path={props.location.pathname} />
+      <h1>Post Page</h1>
+    </>
+  )
 }
 
 export default Post

@@ -31,13 +31,13 @@ const Navbar = (props) => {
         setMenu(false)
       }
     }
-  })
+  }, [isMobile, isMenuOpened, width])
 
   const updateWidth = () => {
     setWidth(window.innerWidth)
   }
 
-  const isRegister = window.location.pathname === '/register'
+  const isRegister = props.path === '/register'
 
   return (
     <>
@@ -46,8 +46,8 @@ const Navbar = (props) => {
           <img className="Navbar__logo" src={Logo} alt="Logo" />
           <nav className="Navbar__btn-container">
 
-            {isRegister ? <Link to="/register" className={classNames('Navbar__btn', 'Navbar__btn-blue1', { hidden: isMobile })}>Inscription</Link> : ''}
-            {!isRegister ? <Link to="/login" className={classNames('Navbar__btn', 'Navbar__btn-blue2', { hidden: isMobile })}>Connexion</Link> : ''}
+            {!isRegister ? <Link to="/register" className={classNames('Navbar__btn', 'Navbar__btn-blue1', { hidden: isMobile })}>Inscription</Link> : ''}
+            {isRegister ? <Link to="/login" className={classNames('Navbar__btn', 'Navbar__btn-blue2', { hidden: isMobile })}>Connexion</Link> : ''}
             <button onClick={() => setMenu(!isMenuOpened)} className={classNames('Navbar__bars-btn', { hidden: !isMobile })}><FontAwesomeIcon icon={faBars} /></button>
           </nav>
         </div>
