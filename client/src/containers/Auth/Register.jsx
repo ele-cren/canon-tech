@@ -1,7 +1,7 @@
 import React from 'react'
-import OAuthForm from '../components/OAuthForm'
-import FormSeparator from '../components/FormSeparator'
-import RegisterForm from '../components/RegisterForm'
+import OAuthForm from '../../components/Auth/OAuthForm'
+import FormSeparator from '../../components/Auth/FormSeparator'
+import RegisterForm from '../../components/Auth/RegisterForm'
 
 const Register = () => {
   return (

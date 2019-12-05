@@ -45,7 +45,7 @@ const Navbar = () => {
     <>
       <div className="Navbar__container">
         <div className="Navbar__main-container">
-          <img className="Navbar__logo" src={Logo} alt="Logo" />
+          <Link to="/"><img className="Navbar__logo" src={Logo} alt="Logo" /></Link>
           <nav className="Navbar__btn-container">
 
             {isLogin || (!isRegister && !isLogin) ? <Link to="/register" className={classNames('Navbar__btn', 'Navbar__btn-blue1', { hidden: isMobile })}>Inscription</Link> : ''}

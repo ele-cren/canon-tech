@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const RegisterForm = () => {
   return (
@@ -16,6 +17,9 @@ const RegisterForm = () => {
           <input className="RegisterForm__register-btn" type="submit" value="Inscription" />
         </div>
       </form>
+      <div className="RegisterForm__login-container font-montserrat">
+        <div>Déjà inscrit ? <Link to="/login" className="RegisterForm__login-txt">Connectez-vous</Link></div>
+      </div>
     </>
   )
 }

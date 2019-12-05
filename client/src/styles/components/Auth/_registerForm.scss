@@ -36,3 +36,20 @@
     background-color: #1f3b4e;
   }
 }
+
+.RegisterForm__login-container {
+  background-color: $white;
+  box-shadow: $boxShadow;
+  font-size: 12px;
+  margin-top: 25px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 350px;
+  .RegisterForm__login-txt {
+    color: $blue1;
+    text-decoration: none;
+  }
+}
