@@ -20,3 +20,10 @@
     cursor: auto;
   }
 }
+
+@media (max-width: 800px) {
+  .DashboardNavMenu__container {
+    top: 130px;
+    position: fixed;
+  }
+}
