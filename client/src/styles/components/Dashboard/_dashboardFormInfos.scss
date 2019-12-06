@@ -1,0 +1,44 @@
+.DashboardFormInfos__container {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  .DashboardFormInfos__input-bloc {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    margin: 5px 10px 5px 10px;
+  }
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  input {
+    height: 30px;
+    background-color: $white;
+    border: none;
+    box-shadow: $boxShadow;
+    padding-left: 10px;
+  }
+}
+.DashboardFormInfos__btn-container {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  input[type=submit] {
+    font-size: 16px;
+    text-align: center;
+    border: none;
+    background-color: $lightBlue1;
+    border-radius: 50px;
+    box-shadow: $boxShadow;
+    color: $lightGrey;
+    cursor: pointer;
+    width: 150px;
+    height: 35px;
+  }
+  input[type=submit]:hover {
+    background-color: #607dcc;
+  }
+}

@@ -1,5 +1,7 @@
 import React from 'react'
 import DashboardInfosImage from '../../components/Dashboard/DashbordInfosImage'
+import DashboardPublicInfos from '../../components/Dashboard/DashboardPublicInfos'
+import DashboardPrivateInfos from '../../components/Dashboard/DashboardPrivateInfos'
 
 const DashboardInfos = () => {
   return (
@@ -7,6 +9,8 @@ const DashboardInfos = () => {
       <h2 className="font-roboto">Informations personnelles</h2>
       <div className="DashboardInfos__center-container">
         <DashboardInfosImage />
+        <DashboardPublicInfos />
+        <DashboardPrivateInfos />
       </div>
     </div>
   )
