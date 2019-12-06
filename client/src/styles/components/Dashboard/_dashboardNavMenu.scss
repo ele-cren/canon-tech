@@ -1,10 +1,10 @@
 .DashboardNavMenu__container {
+  position: fixed;
   width: 250px;
   background-color: $white;
   box-shadow: $boxShadow;
-  height: 100vh;
   nav {
-    margin-top: 40px;
+    margin: 40px 0 40px 0;
   }
   li {
     list-style-type: none;
