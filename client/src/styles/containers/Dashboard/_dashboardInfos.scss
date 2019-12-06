@@ -1,0 +1,16 @@
+.DashboardInfos__container {
+  flex-grow: 1;
+  margin-left: 10px;
+  position: sticky;
+  h2 {
+    font-size: 20px;
+    color: $blue2;
+    font-weight: normal;
+  }
+  .DashboardInfos__center-container {
+    width: 100%;
+    max-width: 80%;
+    margin: auto;
+    margin-top: 30px;
+  }
+}
