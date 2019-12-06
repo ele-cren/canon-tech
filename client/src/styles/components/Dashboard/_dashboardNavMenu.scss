@@ -1,0 +1,23 @@
+.DashboardNavMenu__container {
+  width: 250px;
+  background-color: $white;
+  box-shadow: $boxShadow;
+  height: 100vh;
+  nav {
+    margin-top: 40px;
+  }
+  li {
+    list-style-type: none;
+    background-color: $lightGrey;
+    margin: 5px;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .active-menu {
+    background-color: $lightBlue1;
+    color: $lightGrey;
+    cursor: auto;
+  }
+}
