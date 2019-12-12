@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import DashboardNavMenu from '../../components/Dashboard/DashboardNavMenu'
 import DashboardInfos from './DashboardInfos'
 import DashboardDisplayBtn from '../../components/Dashboard/DashboardDisplayBtn'
+import DashboardLists from './DashboardLists'
 
 const Dashboard = () => {
   const [selectedMenu, setSelected] = useState(1)
@@ -41,6 +42,7 @@ const Dashboard = () => {
       {isMobile ? <DashboardDisplayBtn isMenuOpened={isMenuOpened} setMenu={setMenu} /> : ''}
       {(isMenuOpened && isMobile) || !isMobile ? <DashboardNavMenu selectedMenu={selectedMenu} setMenu={setSelected} /> : ''}
       {selectedMenu === 1 ? <DashboardInfos /> : ''}
+      {selectedMenu === 2 ? <DashboardLists /> : ''}
     </div>
   )
 }

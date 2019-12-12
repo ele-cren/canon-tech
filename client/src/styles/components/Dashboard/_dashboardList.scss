@@ -1,0 +1,16 @@
+.DashboardList__container {
+  margin: 5px;
+  .DashboardList__title-container {
+    background-color: $blue1;
+    padding: 10px;
+    max-width: 650px;
+    .DashboardList__title {
+      color: $lightGrey;
+      font-size: 16px;
+    }
+    .DashboardList__items-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+}
