@@ -1,5 +1,5 @@
 .DashboardNavMenu__container {
-  width: 250px;
+  flex-basis: 250px;
   background-color: $white;
   box-shadow: $boxShadow;
   nav {
@@ -23,7 +23,7 @@
 
 @media (max-width: 800px) {
   .DashboardNavMenu__container {
-    top: 130px;
+    top: 115px;
     position: fixed;
   }
 }

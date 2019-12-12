@@ -4,3 +4,9 @@
   margin: 25px auto auto auto;
   display: flex;
 }
+
+@media (max-width: 800px) {
+  .Dashboard__container {
+    margin: auto;
+  }
+}

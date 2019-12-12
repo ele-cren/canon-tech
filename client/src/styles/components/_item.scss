@@ -1,0 +1,22 @@
+.Item__container {
+  margin: 10px;
+  img {
+    width: 150px;
+    height: 175px;
+  }
+  .Item__title, .Item__author {
+    margin-left: 5px;
+  }
+  .Item__title {
+    font-weight: bold;
+  }
+}
+
+@media (max-width: 474px) {
+  .Item__container {
+    img {
+      width: 120px;
+      height: 145px;
+    }
+  }
+}

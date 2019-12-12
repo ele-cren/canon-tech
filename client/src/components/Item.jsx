@@ -1,8 +1,12 @@
 import React from 'react'
 
-const Item = () => {
+const Item = (props) => {
   return (
-    <div></div>
+    <div className="Item__container">
+      <img src={props.img} alt="item" />
+      <div className="Item__title">{props.title}</div>
+      <div className="Item__author">{props.author}</div>
+    </div>
   )
 }
 
