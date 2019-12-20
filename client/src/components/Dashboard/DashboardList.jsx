@@ -4,7 +4,7 @@ import Item from '../Item'
 const DashboardList = () => {
   let items = []
   for (let i = 0; i < 6; i++) {
-    items = [...items, <Item img="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Blade_Runner_%281982_poster%29.png/220px-Blade_Runner_%281982_poster%29.png"
+    items = [...items, <Item key={i} img="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Blade_Runner_%281982_poster%29.png/220px-Blade_Runner_%281982_poster%29.png"
     title="Blade Runner" author="Ridley Scott" />]
   }
   return (

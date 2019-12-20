@@ -4,7 +4,7 @@ import DashboardList from '../../components/Dashboard/DashboardList'
 const DashboardLists = () => {
   let lists = []
   for (let i = 0; i < 3; i++) {
-    lists = [...lists, <DashboardList />]
+    lists = [...lists, <DashboardList key={i} />]
   }
   return (
     <div className="DashboardLists__container">

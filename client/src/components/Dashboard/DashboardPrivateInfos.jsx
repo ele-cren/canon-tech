@@ -17,7 +17,7 @@ const DashboardPrivateInfos = () => {
           <input type="email" name="email" />
         </div>
       </div>
-      <div className="DashboardFormInfos__btn-container">
+      <div style={{ marginBottom: 40 }} className="DashboardFormInfos__btn-container">
         <input type="submit" value="Mettre à jour" />
       </div>
     </form>
