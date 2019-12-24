@@ -3,6 +3,7 @@ import DashboardNavMenu from '../../components/Dashboard/DashboardNavMenu'
 import DashboardInfos from './DashboardInfos'
 import DashboardDisplayBtn from '../../components/Dashboard/DashboardDisplayBtn'
 import DashboardLists from './DashboardLists'
+import DashboardReviews from './DashboardReviews'
 
 const Dashboard = () => {
   const [selectedMenu, setSelected] = useState(1)
@@ -43,6 +44,7 @@ const Dashboard = () => {
       {(isMenuOpened && isMobile) || !isMobile ? <DashboardNavMenu selectedMenu={selectedMenu} setMenu={setSelected} /> : ''}
       {selectedMenu === 1 ? <DashboardInfos /> : ''}
       {selectedMenu === 2 ? <DashboardLists /> : ''}
+      {selectedMenu === 3 ? <DashboardReviews /> : ''}
     </div>
   )
 }

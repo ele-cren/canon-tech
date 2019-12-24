@@ -15,6 +15,11 @@ const DashboardList = () => {
       <div className="DashboardList__items-container">
         {items}
       </div>
+      <div className="DashboardList__btn-container">
+        <button className="DashboardList__plus-btn">
+          Voir plus
+        </button>
+      </div>
     </div>
   )
 }

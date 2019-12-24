@@ -13,6 +13,21 @@
     display: flex;
     flex-wrap: wrap;
   }
+  .DashboardList__btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .DashboardList__plus-btn {
+      box-shadow: $boxShadow;
+      width: 150px;
+      height: 30px;
+      border: none;
+      border-radius: 3px;
+      background-color: white;
+      margin: 5px 0 5px 0;
+      cursor: pointer;
+    }
+  }
 }
 
 @media (max-width: 574px) {
