@@ -1,3 +1,44 @@
 .DashboardReview__container {
-  
+  margin-top: 10px;
+  display: flex;
+  max-height: 180px;
+  img {
+    width: 150px;
+  }
+  .DashboardReview__review {
+    margin-left: 5px;
+    padding: 10px;
+    background-color: $white;
+    overflow: hidden;
+    position: relative;
+    .DashboardReview__title {
+      display: none !important;
+    }
+    .DashboardReview__overflow-handler {
+      position: absolute;
+      bottom: 0;
+      height: 30px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.95);
+      cursor: pointer;
+      user-select: none;
+    }
+  }
+}
+
+@media (max-width: 435px) {
+  .DashboardReview__container {
+    img {
+      display: none !important;
+    }
+    .DashboardReview__review {
+      .DashboardReview__title {
+        display: block !important;
+        font-weight: bold;
+      }
+    }
+  }
 }
