@@ -18,7 +18,12 @@ const PostHeading = (props) => {
               emptySymbol={<FontAwesomeIcon icon={emptyStar} />}
               fullSymbol={<FontAwesomeIcon icon={faStar} />} />
           </div>
+          <div className="PostHeading__rating-separator"></div>
+          <div className="PostHeading__rating-info">
+            <FontAwesomeIcon icon={emptyStar} /> {props.note} / 10
+          </div>
         </div>
+        <button className="PostHeading__addlist-btn">Ajouter à une liste</button>
       </div>
     </div>
   )

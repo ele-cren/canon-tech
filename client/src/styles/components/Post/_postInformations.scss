@@ -1,0 +1,24 @@
+.PostInformations__container {
+  margin: 15px 0 0 5px;
+  .PostInformations__title {
+    font-weight: bold;
+  }
+  .PostInformations__infos-container {
+    margin-top: 5px;
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+  }
+  .PostInformations__information {
+    padding: 5px 15px 5px 15px;
+    margin: 3px;
+    box-shadow: $boxShadow;
+    color: $lightGrey;
+  }
+  .PostInformations__category {
+    background-color: $green1;
+  }
+  .PostInformations__genre {
+    background-color: $blue1;
+  }
+}

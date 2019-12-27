@@ -1,11 +1,12 @@
 .PostHeading__container {
   display: flex;
+  margin-left: 5px;
   img {
     width: 200px;
     height: 240px;
   }
   .PostHeading__infos-container {
-    margin-left: 10px;
+    margin-left: 15px;
     padding-top: 25px;
     h1, h2 {
       font-weight: normal;
@@ -25,6 +26,83 @@
     .PostHeading__stars {
       color: $green2;
       font-size: 30px;
+    }
+    .PostHeading__rating-separator {
+      width: 2px;
+      height: auto;
+      background-color: $green2;
+      margin-left: 20px;
+    }
+    .PostHeading__rating-info {
+      margin-left: 20px;
+      background-color: $green2;
+      color: $lightGrey;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      box-shadow: $boxShadow;
+      svg {
+        margin-right: 10px;
+      }
+    }
+  }
+  .PostHeading__addlist-btn {
+    margin-top: 20px;
+    background-color: $green2;
+    color: $lightGrey;
+    border: none;
+    box-shadow: $boxShadow;
+    border-radius: 5px;
+    padding: 10px 15px 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .PostHeading__addlist-btn:hover {
+    background-color: #032d3a;
+  }
+}
+
+@media (max-width: 690px) {
+  .PostHeading__container {
+    .PostHeading__rating-container {
+      margin-top: 5px;
+      display: flex;
+      flex-direction: column;
+      .PostHeading__rating-separator {
+        display: none !important;
+      }
+      .PostHeading__rating-info {
+        max-width: 90px;
+        margin: 5px 0 0 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .PostHeading__container {
+    flex-direction: column;
+    img {
+      width: 250px;
+      height: 290px;
+    }
+    .PostHeading__infos-container {
+      margin: 10px 0 0 0;
+      padding: 0;
+    }
+    .PostHeading__rating-container {
+      display: flex;
+      margin: 10px 0 0 0;
+      .PostHeading__stars {
+        font-size: 25px;
+      }
+      .PostHeading__rating-info {
+        margin: 10px 0 0 0;
+      }
+    }
+    .PostHeading__addlist-btn {
+      margin-top: 10px;
     }
   }
 }

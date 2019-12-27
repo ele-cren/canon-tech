@@ -1,0 +1,41 @@
+.PostReview__container {
+  margin: 15px 0 20px 0;
+  .PostReview__userinfos-container {
+    display: flex;
+    align-items: center;
+    img {
+      width: 40px;
+    }
+    .PostReview__username {
+      margin-left: 10px;
+    }
+  }
+  .PostReview__review {
+    background-color: $white;
+    box-shadow: $boxShadow;
+    padding: 10px;
+    margin: 10px 5px 5px 0;
+  }
+  .PostReview__rates-container {
+    display: flex;
+    justify-content: space-between;
+    color: $green2;
+    .PostReview__review-rate {
+      svg {
+        margin-right: 5px;
+      }
+    }
+    .PostReview__review-votes {
+      display: flex;
+      svg {
+        cursor: pointer;
+      }
+      svg:hover {
+        color: #07718f;
+      }
+      span {
+        margin: 0 15px 0 5px;
+      }
+    }
+  }
+}
