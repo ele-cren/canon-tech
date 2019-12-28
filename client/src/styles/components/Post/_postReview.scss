@@ -38,4 +38,12 @@
       }
     }
   }
+  .PostReview__comments-container {
+    margin: 10px 0 0 30px;
+    .PostReview__comments-title {
+      cursor: pointer;
+    }
+    .PostReview__collapse-content {
+    }
+  }
 }

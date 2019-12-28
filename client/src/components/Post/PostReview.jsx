@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import UserPicture from '../../assets/pictures/women 5.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faThumbsUp, faThumbsDown } from '@fortawesome/free-regular-svg-icons'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import PostComment from './PostComment'
 
 const PostReview = (props) => {
+  const [isOpen, setOpen] = useState(false);
   const { review } = props
+  const comments = review.comments.map((x, i) => {
+    return <PostComment key={i} comment={x} />
+  })
   return (
     <div className="PostReview__container">
       <div className="PostReview__userinfos-container">
@@ -23,6 +29,14 @@ const PostReview = (props) => {
           <FontAwesomeIcon icon={faThumbsUp} /> <span>{review.upvotes}</span>
           <FontAwesomeIcon icon={faThumbsDown} /> <span>{review.downvotes}</span>
         </div>
+      </div>
+      <div className="PostReview__comments-container">
+        <div onClick={() => setOpen(!isOpen)} className="PostReview__comments-title">Afficher les commentaires <FontAwesomeIcon icon={faChevronDown} /></div>
+        {isOpen ? (
+          <div className="PostReview__collapse-content">
+            {comments}
+          </div>
+        ) : ''}
       </div>
     </div>
   )
