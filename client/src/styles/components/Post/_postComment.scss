@@ -10,4 +10,10 @@
       margin-left: 10px;
     }
   }
+  .PostComment__comment {
+    background-color: $white;
+    box-shadow: $boxShadow;
+    padding: 10px;
+    margin: 10px 5px 5px 0;
+  }
 }

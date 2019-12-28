@@ -9,6 +9,9 @@ const PostComment = (props) => {
         <img src={UserPicture} />
         <span>{comment.username}</span>
       </div>
+      <div className="PostComment__comment">
+        {comment.comment}
+      </div>
     </div>
   )
 }
