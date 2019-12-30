@@ -19,12 +19,12 @@ const UserSchema = new Schema({
   password: String
 })
 
-UserSchema.methods.validPassword = function (password) {
-  return bcrypt.compare(password, this.password)
+UsersSchema.methods.hashPassword = (password) => {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
 }
 
-UserSchema.methods.comparePasswords = function comparePasswords(password) {
-  bcrypt.compare(password, this.password)
+UserSchema.methods.comparePasswords = (password, callback) => {
+  bcrypt.compare(password, this.password, callback)
 }
 
 export default mongoose.model('User', UserSchema)

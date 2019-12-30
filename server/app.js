@@ -1,5 +1,5 @@
 import Server from './server'
-import Api from './api/api'
+import Api from './api/Api'
 require('dotenv').config()
 import mongoose from 'mongoose'
 
