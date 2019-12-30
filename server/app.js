@@ -1,19 +1,28 @@
-const express = require('express')
-const path = require('path')
+import Server from './server'
+import Api from './api/api'
+require('dotenv').config()
+import mongoose from 'mongoose'
 
-const app = express()
+const DB_URL = process.env.DB_URL
+const server = new Server()
 
-app.use(express.static(path.join(__dirname, '/../client/build')))
+server.start(process.env.PORT)
 
-app.get('/api/getName', (req,res) => {
-    res.json({ name: 'Erwan' })
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+
+mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
+  if (err) {
+    console.log('Error database connection ' + err)
+  } else {
+    console.log('Successfully connected to the database')
+    //API
+    const api = new Api(server.app)
+    api.setRoutes()
+  }
 })
 
-if (process.env.NODE_ENV === 'production') {
-    app.get('*', (req,res) =>{
-        res.sendFile(path.join(__dirname + '/../client/build/index.html'))
-    })
-}
-
-const port = process.env.PORT || 5000
-app.listen(port)
+process.on('SIGINT', () => {
+  server.stop()
+  process.exit(0)
+})

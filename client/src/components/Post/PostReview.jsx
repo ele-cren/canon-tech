@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faThumbsUp, faThumbsDown } from '@fortawesome/free-regular-svg-icons'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import PostComment from './PostComment'
+import PostAddArea from './PostAddArea'
 
 const PostReview = (props) => {
   const [isOpen, setOpen] = useState(false);
@@ -34,6 +35,7 @@ const PostReview = (props) => {
         <div onClick={() => setOpen(!isOpen)} className="PostReview__comments-title">Afficher les commentaires <FontAwesomeIcon icon={faChevronDown} /></div>
         {isOpen ? (
           <div className="PostReview__collapse-content">
+            <PostAddArea btn="Commenter" />
             {comments}
           </div>
         ) : ''}

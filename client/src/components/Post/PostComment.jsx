@@ -1,5 +1,6 @@
 import React from 'react'
 import UserPicture from '../../assets/pictures/women 5.png'
+import PostAddArea from './PostAddArea'
 
 const PostComment = (props) => {
   const { comment } = props
@@ -12,6 +13,7 @@ const PostComment = (props) => {
       <div className="PostComment__comment">
         {comment.comment}
       </div>
+      <PostAddArea btn="Répondre" />
     </div>
   )
 }
