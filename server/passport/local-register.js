@@ -7,20 +7,23 @@ const localRegister = new Strategy({
   passReqToCallback: false
 }, (email, password, done) => {
   User.findOne({ email: email}, (err, user) => {
+    const errorRegister = {
+      message: 'ErrorRegister',
+      errors: {}
+    }
     if (err) {
-      return done(err)
+      return done(errorRegister)
     }
     if (user) {
-      const error = new Error('Un compte existe déjà avec cette adresse')
-      error.name = 'UserAlreadyExists'
-      return done(error)
+      errorRegister.errors.email = 'UserAlreadyExists'
+      return done(errorRegister)
     }
     const newUser = new User()
     newUser.email = email
     newUser.password = newUser.generateHash(password)
     newUser.save(err => {
       if (err) {
-        return done(err)
+        return done(errorRegister)
       }
       return done(null, newUser)
     })

@@ -7,22 +7,24 @@ const localLogin = new Strategy({
   passReqToCallback: false
 }, (email, password, done) => {
   User.findOne({ email: email }, (err, user) => {
+    const errorLogin = {
+      message: 'ErrorLogin',
+      errors: {}
+    }
     if (err) {
-      return done(err)
+      return done(errorLogin)
     }
     if (!user) {
-      const error = new Error('Adresse email invalide')
-      error.name = 'IncorrectCredential'
-      return done(error)
+      errorLogin.errors.email = 'NoAccount'
+      return done(errorLogin)
     }
     return user.comparePasswords(password, (err, isMatch) => {
       if (err) {
-        return done(err)
+        return done(errorLogin)
       }
       if (!isMatch) {
-        const error = new Error('Mot de passe incorrect')
-        error.name = 'IncorrectCredential'
-        return done (error)
+        errorLogin.errors.password = 'InvalidPassword'
+        return done (errorLogin)
       }
       return done(null, user)
     })
