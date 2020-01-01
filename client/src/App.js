@@ -1,5 +1,6 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import { checkLogged } from './actions/userActions/loginActions'
 import Login from './containers/Auth/Login'
 import Register from './containers/Auth/Register'
 import PostsList from './containers/PostsList'
@@ -7,23 +8,76 @@ import Post from './containers/Post'
 import Navbar from './components/Navbar'
 import Dashboard from './containers/Dashboard/Dashboard'
 import './styles/main.scss'
+import { connect } from 'react-redux'
 
-const App = () => {
+const App = (props) => {
+  useEffect(() => {
+    props.isAuthenticated()
+  }, [])
   return (
     <div className="TechCanon">
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={Login} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/dashboard" component={Dashboard} />
+          <Route exact path="/" component={PostsList} />
+          <AlreadyLoggedRoute path="/login" component={Login} logged={ props.user.user._id } />
+          <AlreadyLoggedRoute path="/register" component={Register} logged={ props.user.user._id } />
+          <PrivateRoute path="/dashboard" component={Dashboard} logged={ props.user.user._id } />
           <Route path="/post" component={Post} />
-          <Route path="/postsList" component={PostsList} />
         </Switch>
       </Router>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+const AlreadyLoggedRoute = ({ component: Component, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        !rest.logged ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/",
+              state: { from: props.location }
+            }}
+          />
+        )
+      }
+    />
+  )
+}
+
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        rest.logged ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: props.location }
+            }}
+          />
+        )
+      }
+    />
+  )
+}
+
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+const mapDispatchToProps = {
+  isAuthenticated: checkLogged
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

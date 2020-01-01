@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const LoginForm = () => {
+const LoginForm = (props) => {
   return (
     <>
-      <form className="LoginForm__form">
+      <form className="LoginForm__form" onSubmit={ props.logIn } >
         <label className="LoginForm__label" htmlFor="email">Email</label>
         <input className="LoginForm__input" type="email" name="email" />
         <label className="LoginForm__label" htmlFor="password">Mot de passe</label>

@@ -5,12 +5,13 @@ import Validator from 'validatorjs'
 const router = express.Router()
 
 const registerValidation = (payload) => {
+  let isFormValid = false
   const userData = {
     email: payload.email,
     username: payload.username,
     password: payload.password,
     password_confirmation: payload.confirm,
-    firsrName: payload.firstName,
+    firstName: payload.firstName,
     lastName: payload.lastName
   }
   const rules = {
@@ -21,28 +22,30 @@ const registerValidation = (payload) => {
     lastName: 'required|string'
   }
   const errorMessages = {
-    required: 'Required' + ':atribute',
+    required: 'Required' + ':attribute',
     email: 'InvalidEmail',
     'alpha_dash': 'UserChars',
     'between': 'UserBetween'
   }
   const validation = new Validator(userData, rules, errorMessages)
+  isFormValid = validation.passes()
   return {
+    isValid: isFormValid,
     errors: validation.errors,
-    message: validation.passes() ? '' : 'ErrorRegister'
+    message: isFormValid ? '' : 'ErrorRegister'
   }
 }
 
 router.post('/register', (req, res, next) => {
   const formValidation = registerValidation(req.body)
-  if (formValidation.errors) {
-    return res.status(400).json(formValidation)
+  if (!formValidation.isValid) {
+    return res.json(formValidation)
   }
   return passport.authenticate('local-register', (err) => {
     if (err) {
-      return res.status(400).json(err)
+      return res.json(err)
     }
-    return res.status(200).json({
+    return res.json({
       message: 'RegisterOK'
     })
   })(req, res, next)

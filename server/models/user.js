@@ -19,11 +19,11 @@ const UserSchema = new Schema({
   password: String
 })
 
-UsersSchema.methods.hashPassword = (password) => {
+UserSchema.methods.hashPassword = (password) => {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
 }
 
-UserSchema.methods.comparePasswords = (password, callback) => {
+UserSchema.methods.comparePasswords = function comparePasswords(password, callback) {
   bcrypt.compare(password, this.password, callback)
 }
 

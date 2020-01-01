@@ -7,9 +7,6 @@ class Api {
   }
 
   setRoutes () {
-    this.app.use('/api/test', (req, res) => {
-      return res.json({ test: 'test' })
-    })
     this.app.use('/api/auth', RegisterRoutes)
     this.app.use('/api/auth', LoginRoutes)
   }
