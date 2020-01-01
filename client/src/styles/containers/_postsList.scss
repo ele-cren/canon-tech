@@ -1,5 +1,4 @@
 .PostsList__container {
-  border: 1px solid black;
   display: flex;
 }
 
@@ -8,11 +7,12 @@
   margin: auto;
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  
 }
 
 .PostsList__data-container {
   display: flex;
+  height: 100vh;
 }
 .PostsList__filters-container {
   width: 200px;
@@ -20,4 +20,47 @@
   flex-direction: column;
   background-color: $white;
   box-shadow: $boxShadow;
+  input{
+    margin : 6px;
+  }
+  hr{
+    margin-bottom: 10px;
+  }
+
+}
+
+.PostsList__infos-container{
+  display: flex;
+  font-size: 12px;
+  justify-content: space-evenly;  
+  margin-left: 10px;
+  margin-bottom: 35px;
+}
+
+.PostsList__searchbar-container{
+  margin:20px;
+  background-color: white;
+  max-width: 200px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.PostsList__searchbar {
+  border: hidden;
+  outline: none
+}
+
+.PostsList__posts-infos-container{
+  min-width: 660px;
+}
+
+.PostsList__filters-title{
+  margin : 20px;
+}
+
+.PostsList__posts-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 600px;
 }
