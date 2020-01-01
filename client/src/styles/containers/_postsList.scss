@@ -7,7 +7,17 @@
   margin: auto;
   display: flex;
   flex-direction: column;
-  
+    
+    @media screen and (max-width: 767px) {
+    /*Jusqu’à 479px : smartphone en portrait
+De 480px à 959px : smartphone en paysage, tablette en portrait et petite tablette en paysage
+De 960px à 1280px : tablette en paysage, écran d’ordinateur de taille petite et moyenne
+1281px et au delà : grand écran d’ordinateur (21″ et + en plein écran )
+*/
+    }
+    
+    @media screen and (max-width: 479px) {
+}
 }
 
 .PostsList__data-container {
@@ -15,7 +25,7 @@
   height: 100vh;
 }
 .PostsList__filters-container {
-  width: 200px;
+  width: 250px;
   display: flex;
   flex-direction: column;
   background-color: $white;
@@ -38,16 +48,23 @@
 }
 
 .PostsList__searchbar-container{
-  margin:20px;
+  margin: 20px 0px;
   background-color: white;
-  max-width: 200px;
+  width: 350px;
+  height: 30px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 5px 10px grey;
 }
 
 .PostsList__searchbar {
   border: hidden;
-  outline: none
+  outline: none;
+  width: 300px;
+  margin-left: 10px;
+  font-size: 16px;
+  font-style: italic;
 }
 
 .PostsList__posts-infos-container{
@@ -56,6 +73,7 @@
 
 .PostsList__filters-title{
   margin : 20px;
+  font-weight: bold;
 }
 
 .PostsList__posts-container{
