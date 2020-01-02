@@ -40,6 +40,7 @@ router.post('/login', (req, res, next) => {
       if (err) {
         return res.json(err)
       }
+      console.log(user)
       return res.json({
         message: 'LoginOk',
         user: user
