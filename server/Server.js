@@ -1,6 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
-import session  from 'express-session'
+import cookieParser from 'cookie-parser'
+import cookieSession  from 'cookie-session'
 import passport from 'passport'
 import User from './models/user'
 //import path from 'path'
@@ -23,11 +24,11 @@ class Server {
     this.app.use(bodyParser.urlencoded({
       extended: true
     }))
+    this.app.use(cookieParser(process.env.SESSION_SECRET))
     this.app.use(bodyParser.json())
-    this.app.use(session({
-      secret: process.env.SESSION_SECRET,
-      resave: false,
-      saveUninitialized: true
+    this.app.use(cookieSession({
+      name: 'session',
+      secret: process.env.SESSION_SECRET
     }))
     this.configurePassport()
   }

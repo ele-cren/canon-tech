@@ -9,19 +9,21 @@ import Navbar from './components/Navbar'
 import Dashboard from './containers/Dashboard/Dashboard'
 import './styles/main.scss'
 import { connect } from 'react-redux'
+import Logout from './components/Auth/Logout.jsx'
 
 const App = (props) => {
   useEffect(() => {
     props.isAuthenticated()
-  }, [])
-  return (
+  }, [props])
+  return !props.user.checked ? 'Loading...' : (
     <div className="TechCanon">
       <Router>
-        <Navbar />
+        <Navbar logged={props.user.user._id} />
         <Switch>
           <Route exact path="/" component={PostsList} />
           <AlreadyLoggedRoute path="/login" component={Login} logged={ props.user.user._id } />
           <AlreadyLoggedRoute path="/register" component={Register} logged={ props.user.user._id } />
+          <AlreadyLoggedRoute path="/logout" component={Logout} logged={props.user.user._id} />
           <PrivateRoute path="/dashboard" component={Dashboard} logged={ props.user.user._id } />
           <Route path="/post" component={Post} />
         </Switch>

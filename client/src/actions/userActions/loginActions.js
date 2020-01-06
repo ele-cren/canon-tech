@@ -32,6 +32,15 @@ export const checkLogged = () => {
   }
 }
 
+export const logOut = () => {
+  return async dispatch => {
+    dispatch({ type: FETCHING })
+    await axios.get(API_URL + '/auth/logout')
+    dispatch({ type: LOGOUT })
+    dispatch({ type: FETCHED })
+  }
+}
+
 export const logIn = (user) => {
   return {
     type: LOGIN,

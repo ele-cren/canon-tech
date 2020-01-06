@@ -40,7 +40,6 @@ router.post('/login', (req, res, next) => {
       if (err) {
         return res.json(err)
       }
-      console.log(user)
       return res.json({
         message: 'LoginOk',
         user: user
@@ -52,6 +51,13 @@ router.post('/login', (req, res, next) => {
 router.get('/isAuthenticated', (req, res) => {
   return res.json({
     user: req.user
+  })
+})
+
+router.get('/logout', (req, res) => {
+  req.logout()
+  return res.json({
+    user: {}
   })
 })
 

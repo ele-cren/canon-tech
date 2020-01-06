@@ -54,6 +54,16 @@
         background-color: $white;
         border: 1px solid $blue2;
       }
+
+      .Navbar__avatar-btn {
+        width: 40px;
+      }
+
+      .Navbar__logout-btn {
+        font-size: 25px;
+        color: $blue1;
+        margin: 0 5px 0 10px;
+      }
       
       .Navbar__bars-btn {
         border: 1px solid black;
