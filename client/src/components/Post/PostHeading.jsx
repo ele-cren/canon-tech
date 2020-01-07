@@ -7,7 +7,7 @@ import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons'
 const PostHeading = (props) => {
   return (
     <div className="PostHeading__container">
-      <img src={props.img} />
+      <img src={props.img} alt="Document Poster" />
       <div className="PostHeading__infos-container">
         <h1 className="font-roboto">{props.title} ({props.year})</h1>
         <h2 className="font-roboto">{props.author}</h2>

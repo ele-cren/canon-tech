@@ -4,7 +4,7 @@ import Woman from '../../assets/pictures/women 5.png'
 const DashboardInfosImage = (props) => {
   return (
     <div className="DashboardInfosImage__container">
-        <img src={Woman} />
+        <img src={Woman} alt="User avatar" />
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { LOGIN, FETCHED, FETCHING, LOGOUT, CHECKED } from './userConsts'
+import { LOGIN, FETCHED, FETCHING, CHECKED } from './userConsts'
 import { showErrors, cleanErrors } from '../errorsActions/errorsActions'
 import axios from 'axios'
 import { API_URL } from '../../utils/utils'
@@ -29,15 +29,6 @@ export const checkLogged = () => {
     }
     dispatch({ type: FETCHED })
     dispatch({ type: CHECKED })
-  }
-}
-
-export const logOut = () => {
-  return async dispatch => {
-    dispatch({ type: FETCHING })
-    await axios.get(API_URL + '/auth/logout')
-    dispatch({ type: LOGOUT })
-    dispatch({ type: FETCHED })
   }
 }
 

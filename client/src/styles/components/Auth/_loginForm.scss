@@ -7,6 +7,10 @@
     font-size: 16px;
     margin: 15px 0 5px 0;
   }
+  .LoginForm__error-message {
+    margin-top: 5px;
+    color: #ff090f;
+  }
   .LoginForm__input {
     border: none;
     box-shadow: $boxShadow;

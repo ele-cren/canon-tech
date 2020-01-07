@@ -2,7 +2,6 @@ import React from 'react'
 import PostHeading from '../components/Post/PostHeading'
 import PostInformations from '../components/Post/PostInformations'
 import PostReviews from '../components/Post/PostReviews'
-import UserPicture from '../assets/pictures/women 5.png'
 
 const Post = () => {
   const reviews = [

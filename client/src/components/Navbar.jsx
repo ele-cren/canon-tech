@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
 import Logo from '../assets/pictures/techCanonLogo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import { Link, useLocation } from 'react-router-dom'
 import classNames from 'classnames'
 import Avatar from '../assets/pictures/women 5.png'
+import { logOutUser } from '../actions/userActions/logoutActions.js'
 
 const Navbar = (props) => {
   const [isMobile, setMobile] = useState(false)
@@ -18,6 +20,10 @@ const Navbar = (props) => {
       window.removeEventListener('resize', () => updateWidth())
     }
   }, [])
+
+  const logOut = () => {
+    props.logOut()
+  }
 
   useEffect(() => {
     if (width <= 465) {
@@ -51,8 +57,8 @@ const Navbar = (props) => {
 
   const loggedBtns = (
     <>
-      <Link to="/dashboard" className={classNames({ hidden: isMobile })}><img className="Navbar__avatar-btn" src={Avatar} /></Link>
-      <Link to="/logout" className={classNames({ hidden: isMobile })}><FontAwesomeIcon className="Navbar__logout-btn" icon={faSignOutAlt} /></Link>
+      <Link to="/dashboard" className={classNames({ hidden: isMobile })}><img className="Navbar__avatar-btn" src={Avatar} alt="Avatar" /></Link>
+      <FontAwesomeIcon onClick={logOut} className={classNames('Navbar__logout-btn', { hidden: isMobile })} icon={faSignOutAlt} />
     </>
   )
 
@@ -86,4 +92,10 @@ const Navbar = (props) => {
   )
 }
 
-export default Navbar
+const mapStateToProps = state => state
+
+const mapDispatchToProps = {
+  logOut: logOutUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

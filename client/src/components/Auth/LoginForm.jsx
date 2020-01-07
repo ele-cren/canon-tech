@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import errorsTexts from '../../localization/errors.js'
 
 const LoginForm = (props) => {
   return (
@@ -7,8 +9,10 @@ const LoginForm = (props) => {
       <form className="LoginForm__form" onSubmit={ props.logIn } >
         <label className="LoginForm__label" htmlFor="email">Email</label>
         <input className="LoginForm__input" type="email" name="email" />
+        <span className="LoginForm__error-message">{errorsTexts[props.errors.email]}</span>
         <label className="LoginForm__label" htmlFor="password">Mot de passe</label>
         <input className="LoginForm__input" type="password" name="password" />
+        <span className="LoginForm__error-message">{errorsTexts[props.errors.password]}</span>
         <div className="LoginForm__forgot-container">
           <Link to="/" className="LoginForm__forgot-text font-montserrat">Mot de passe oublié ?</Link>
         </div>
@@ -23,4 +27,12 @@ const LoginForm = (props) => {
   )
 }
 
-export default LoginForm
+const mapStateToProps = state => {
+  return {
+    errors: state.errors.errors
+  }
+}
+
+const mapDispathToProps = {}
+
+export default connect(mapStateToProps, mapDispathToProps)(LoginForm)

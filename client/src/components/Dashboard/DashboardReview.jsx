@@ -4,7 +4,7 @@ const DashboardReview = (props) => {
   return (
     <>
       <div className="DashboardReview__container">
-        <img src={props.img} alt="Image" className="DashboardReview__img"/>
+        <img src={props.img} alt="Document Poster" className="DashboardReview__img"/>
         <div className="DashboardReview__review">
           <div className="DashboardReview__title">{props.title}</div>
           {props.review}

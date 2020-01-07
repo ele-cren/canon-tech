@@ -7,7 +7,7 @@ const PostComment = (props) => {
   return (
     <div className="PostComment__container">
       <div className="PostComment__userinfos-container">
-        <img src={UserPicture} />
+        <img src={UserPicture} alt="User avatar" />
         <span>{comment.username}</span>
       </div>
       <div className="PostComment__comment">

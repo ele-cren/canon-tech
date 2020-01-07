@@ -9,12 +9,12 @@ import Navbar from './components/Navbar'
 import Dashboard from './containers/Dashboard/Dashboard'
 import './styles/main.scss'
 import { connect } from 'react-redux'
-import Logout from './components/Auth/Logout.jsx'
 
 const App = (props) => {
   useEffect(() => {
     props.isAuthenticated()
-  }, [props])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   return !props.user.checked ? 'Loading...' : (
     <div className="TechCanon">
       <Router>
@@ -23,7 +23,6 @@ const App = (props) => {
           <Route exact path="/" component={PostsList} />
           <AlreadyLoggedRoute path="/login" component={Login} logged={ props.user.user._id } />
           <AlreadyLoggedRoute path="/register" component={Register} logged={ props.user.user._id } />
-          <AlreadyLoggedRoute path="/logout" component={Logout} logged={props.user.user._id} />
           <PrivateRoute path="/dashboard" component={Dashboard} logged={ props.user.user._id } />
           <Route path="/post" component={Post} />
         </Switch>

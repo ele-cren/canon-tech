@@ -23,7 +23,7 @@ const loginValidation = (payload) => {
   return {
     isValid: isFormValid,
     message: isFormValid ? '' : 'ErrorLogin',
-    errors: validation.errors
+    errors: validation.errors.errors
   }
 } 
 
@@ -54,7 +54,7 @@ router.get('/isAuthenticated', (req, res) => {
   })
 })
 
-router.get('/logout', (req, res) => {
+router.delete('/logout', (req, res) => {
   req.logout()
   return res.json({
     user: {}
