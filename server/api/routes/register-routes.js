@@ -10,28 +10,25 @@ const registerValidation = (payload) => {
     email: payload.email,
     username: payload.username,
     password: payload.password,
-    password_confirmation: payload.confirm,
-    firstName: payload.firstName,
-    lastName: payload.lastName
+    password_confirmation: payload.confirm
   }
   const rules = {
     email: 'required|email',
     password: 'required|between: 8,24|confirmed',
-    username: 'required|between: 3,16|alpha_dash',
-    firstName: 'required|string',
-    lastName: 'required|string'
+    username: 'required|between: 3,16|alpha_dash'
   }
   const errorMessages = {
     required: 'Required' + ':attribute',
     email: 'InvalidEmail',
     'alpha_dash': 'UserChars',
-    'between': 'UserBetween'
+    'between': 'UserBetween:min:max',
+    'confirmed': 'PasswordsNotMatch'
   }
   const validation = new Validator(userData, rules, errorMessages)
   isFormValid = validation.passes()
   return {
     isValid: isFormValid,
-    errors: validation.errors,
+    errors: validation.errors.errors,
     message: isFormValid ? '' : 'ErrorRegister'
   }
 }
