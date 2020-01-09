@@ -7,6 +7,7 @@ import PostsList from './containers/PostsList'
 import Post from './containers/Post'
 import Navbar from './components/Navbar'
 import Dashboard from './containers/Dashboard/Dashboard'
+import NewPost from './containers/NewPost'
 import './styles/main.scss'
 import { connect } from 'react-redux'
 
@@ -21,9 +22,10 @@ const App = (props) => {
         <Navbar logged={props.user.user._id} />
         <Switch>
           <Route exact path="/" component={PostsList} />
-          <AlreadyLoggedRoute path="/login" component={Login} logged={ props.user.user._id } />
-          <AlreadyLoggedRoute path="/register" component={Register} logged={ props.user.user._id } />
-          <PrivateRoute path="/dashboard" component={Dashboard} logged={ props.user.user._id } />
+          <AlreadyLoggedRoute path="/login" component={Login} logged={props.user.user._id} />
+          <AlreadyLoggedRoute path="/register" component={Register} logged={props.user.user._id} />
+          <PrivateRoute path="/dashboard" component={Dashboard} logged={props.user.user._id} />
+          <PrivateRoute path="/post/new" component={NewPost} logged={props.user.user._id} />
           <Route path="/post" component={Post} />
         </Switch>
       </Router>

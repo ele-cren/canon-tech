@@ -1,8 +1,8 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import PostsListFilters from '../components/Post/PostsListFilters'
-import PostsListDisplay from '../components/Post/PostsListDisplay'
+import PostsListFilters from '../components/PostsList/PostsListFilters'
+import PostsListDisplay from '../components/PostsList/PostsListDisplay'
 
 
 const PostsList = () => {

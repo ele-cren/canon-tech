@@ -29,7 +29,7 @@ const PostsListFilters = () => {
       </div>
 
 
-      <div className="PostsList__filters-title">Whish Lists</div>
+      <div className="PostsList__filters-title">Listes</div>
 
       <div className="PostsList__filters PostsList__filters-whishLists">
         <input type="checkbox" /> À regarder plus tard <br />
