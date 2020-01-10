@@ -1,0 +1,26 @@
+{
+  "categories": {
+    "Film": [
+      "Drame",
+      "Comédie",
+      "Thriller",
+      "Action",
+      "Fantastique",
+      "Horreur",
+      "Science-Fiction",
+      "Animation",
+      "Western",
+      "Documentaire"
+    ],
+    "Livre": [
+      "Science-Fiction",
+      "Fantasy",
+      "Fantastique",
+      "Horreur",
+      "Biographie",
+      "Conte",
+      "Nouvelle",
+      "Témoignage"
+    ]
+  }
+}

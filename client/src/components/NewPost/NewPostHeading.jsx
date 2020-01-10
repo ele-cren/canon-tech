@@ -6,16 +6,11 @@ import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons'
 import ModalPicture from './ModalPicture'
 import ImgPlaceholder from '../../assets/pictures/imagePlaceholder.png'
 
-const NewPostHeading = () => {
+const NewPostHeading = (props) => {
   const [isModalOpened, setModal] = useState(false)
   const [img, setImg] = useState('')
   const [croppedimg, setCroppedImg] = useState(null)
-  const [infos, setInfos] = useState({
-    title: '',
-    year: 1990,
-    author: '',
-    rate: 0
-  })
+  const { infos } = props
 
   const onSelectFile = (event) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -33,7 +28,7 @@ const NewPostHeading = () => {
   }
 
   const handleChange = (event) => {
-    setInfos({
+    props.setInfos({
       [event.target.name]: event.target.value
     })
   }
@@ -61,7 +56,7 @@ const NewPostHeading = () => {
         <div className="NewPostHeading__stars">
           <Rating
             stop={10}
-            onChange={(value) => setInfos({ rate: value })}
+            onChange={(value) => props.setInfos({ rate: value })}
             initialRating={infos.rate}
             emptySymbol={<FontAwesomeIcon icon={emptyStar} />}
             fullSymbol={<FontAwesomeIcon icon={faStar} />} />

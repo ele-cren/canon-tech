@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import texts from '../../localization/messages.js'
+const texts = require('../../localization/messages.json')
 
 const RegisterForm = (props) => {
   return (

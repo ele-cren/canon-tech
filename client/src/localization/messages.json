@@ -1,11 +1,9 @@
-export default {
-  // LOGIN
+{
   "Requiredemail": "Veuillez entrer votre adresse mail",
   "Requiredpassword": "Veuillez entrer votre mot de passe",
   "InvalidEmail": "Veuillez entrer une adresse mail valide",
   "NoAccount": "Ce compte n'existe pas",
   "InvalidPassword": "Mot de passe incorrect",
-  // REGISTER
   "Requiredusername": "Veuillez entrer un nom d'utilisateur",
   "UserBetween 316": "Veuillez entrer un nom d'utilisateur entre 3 et 16 caractères",
   "UserBetween 824": "Veuillez entrer un mot de passe entre 8 et 24 caractères",

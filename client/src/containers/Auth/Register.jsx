@@ -5,7 +5,7 @@ import RegisterForm from '../../components/Auth/RegisterForm'
 import { registerUser } from '../../actions/userActions/registerActions.js'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import texts from '../../localization/messages.js'
+const texts = require('../../localization/messages.json')
 
 const Register = (props) => {
 const [redirect, setRedirect] = useState(false)
