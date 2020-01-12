@@ -14,12 +14,12 @@ const NewPostHeading = (props) => {
 
   const onSelectFile = (event) => {
     if (event.target.files && event.target.files.length > 0) {
-      const reader = new FileReader();
+      const reader = new FileReader()
       reader.addEventListener('load', () => {
         setImg(reader.result)
         setModal(true)
       })
-      reader.readAsDataURL(event.target.files[0]);
+      reader.readAsDataURL(event.target.files[0])
     }
   }
 
