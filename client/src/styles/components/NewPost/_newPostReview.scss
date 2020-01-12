@@ -1,3 +1,12 @@
-.NewReview__container {
-  
+.NewPostReview__container {
+  margin: 20px 5px 0 5px;
+  .NewPostReview__label {
+    font-size: 16px;
+    margin: 5px 0 5px 0;
+  }
+  .NewPostReview__review {
+    min-width: 98%;
+    max-width: 98%;
+    padding: 5px;
+  }
 }

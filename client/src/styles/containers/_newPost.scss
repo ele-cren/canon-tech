@@ -7,4 +7,15 @@
     color: $blue2;
     font-weight: normal;
   }
+  .NewPost__btn {
+    border: none;
+    box-shadow: $boxShadow;
+    border-radius: 3px;
+    height: 30px;
+    width: 100px;
+    background-color: $green1;
+    color: $lightGrey;
+    margin: 5px 0 5px 5px;
+    cursor: pointer;
+  }
 }
