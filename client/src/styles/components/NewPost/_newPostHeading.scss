@@ -44,3 +44,16 @@
     }
   }
 }
+
+@media (max-width: 575px) {
+  .NewPostHeading__container {
+    flex-direction: column;
+    .NewPostHeading__infos-container {
+      margin: 0px;
+      .NewPostHeading__stars {
+        margin-top: 10px;
+        font-size: 25px;
+      }
+    }
+  }
+}
