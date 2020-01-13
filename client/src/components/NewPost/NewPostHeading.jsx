@@ -5,12 +5,12 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons'
 import ModalPicture from './ModalPicture'
 import ImgPlaceholder from '../../assets/pictures/imagePlaceholder.png'
+import classNames from 'classnames'
 
 const NewPostHeading = (props) => {
   const [isModalOpened, setModal] = useState(false)
   const [img, setImg] = useState('')
-  const [croppedimg, setCroppedImg] = useState(null)
-  const { infos } = props
+  const { infos, croppedImg, errors } = props
 
   const onSelectFile = (event) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -24,7 +24,7 @@ const NewPostHeading = (props) => {
   }
 
   const onCropSave = (croppedImage) => {
-    setCroppedImg(croppedImage)
+    props.setCroppedImg(croppedImage)
   }
 
   const handleChange = (event) => {
@@ -43,16 +43,19 @@ const NewPostHeading = (props) => {
           type="file"
           accept="image/*"
           onClick={(e) => e.target.value = null} onChange={onSelectFile} />
-        <label style={{ backgroundImage: `url(${ croppedimg ? croppedimg : ImgPlaceholder })` }} htmlFor="input-picture"></label>
-        <span>Sélectionnez une image</span>
+        <label style={{ backgroundImage: `url(${ croppedImg ? croppedImg : ImgPlaceholder })` }} htmlFor="input-picture"></label>
+        <span className={classNames({ 'NewPostHeading__error': errors.poster })}>Sélectionnez une image</span>
       </div>
       <form className="NewPostHeading__infos-container">
         <label htmlFor="title">Titre</label>
         <input onChange={handleChange} type="text" id="title" name="title" value={infos.title} />
+        <span className="NewPostHeading__error">{errors.title}</span>
         <label htmlFor="year">Année</label>
         <input onChange={handleChange} type="number" id="year" name="year" value={infos.year} />
+        <span className="NewPostHeading__error">{errors.year}</span>
         <label htmlFor="author">Auteur(s)</label>
         <input onChange={handleChange} type="text" id="author" name="author" value={infos.author} />
+        <span className="NewPostHeading__error">{errors.author}</span>
         <div className="NewPostHeading__stars">
           <Rating
             stop={10}

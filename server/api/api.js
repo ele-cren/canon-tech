@@ -1,5 +1,6 @@
 import RegisterRoutes from './routes/register-routes'
 import LoginRoutes from './routes/login-routes'
+import DocumentRoutes from './routes/document-routes'
 
 class Api {
   constructor (app) {
@@ -9,6 +10,7 @@ class Api {
   setRoutes () {
     this.app.use('/api/auth', RegisterRoutes)
     this.app.use('/api/auth', LoginRoutes)
+    this.app.use('/api/', DocumentRoutes)
   }
 }
 
