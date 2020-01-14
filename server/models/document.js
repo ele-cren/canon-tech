@@ -1,8 +1,6 @@
-import mongoose from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 import Review from './review'
 import Comment from './comment'
-
-const Schema = mongoose.Schema
 
 const DocumentSchema = new Schema({
   title: {

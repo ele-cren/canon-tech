@@ -1,10 +1,8 @@
-import mongoose from 'mongoose'
-
-const Schema = mongoose.Schema
+import { Schema } from 'mongoose'
 
 const CommentSchema = new Schema({
   comment: String,
   authorId: Number
 }, { timestamps: true })
 
-export default mongoose.model('Comment', CommentSchema)
+export default CommentSchema

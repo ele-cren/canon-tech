@@ -4,6 +4,7 @@ import NewPostInfos from '../components/NewPost/NewPostInfos'
 import NewPostReview from '../components/NewPost/NewPostReview'
 import axios from 'axios'
 import { API_URL } from '../utils/utils'
+const Texts = require('../localization/messages.json')
 
 const NewPost = () => {
   const [infos, setInfos] = useReducer(
@@ -23,8 +24,8 @@ const NewPost = () => {
   const sendPost = async () => {
     const documentData = { 
       ...infos, 
-      genre: currentGenre,
-      categories: cats,
+      genre: currentGenre.value,
+      categories: cats.map(x => x.value),
       posterUrl: croppedImg
     }
     if (!documentData.title || !documentData.author || !documentData.year || !documentData.posterUrl) {
@@ -49,7 +50,9 @@ const NewPost = () => {
           'Content-Type': 'application/json'
         }
       })
-      console.log(response)
+      if (response.data.errors.title) {
+        setErrors({ title: Texts[response.data.errors.title] })
+      }
     }
   }
 

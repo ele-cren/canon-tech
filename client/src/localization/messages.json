@@ -11,5 +11,6 @@
   "EmailExists": "Un compte existe déjà avec cette adresse",
   "UserExists": "Un compte existe déjà avec ce nom d'utilisateur",
   "UserChars": "Le nom d'utilisateur ne peut contenir que des lettres, chiffres, - et _",
-  "LoginOk": "Vous êtes maintenant enregistré. Vous allez maintenant être redirigé."
+  "LoginOk": "Vous êtes maintenant enregistré. Vous allez maintenant être redirigé",
+  "DocumentExists": "Un document avec le même nom existe déjà"
 }

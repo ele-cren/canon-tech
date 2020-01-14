@@ -9,6 +9,7 @@ import LocalLogin from './passport/local-login'
 import LocalRegister from './passport/local-register'
 import cors from 'cors'
 require('dotenv').config()
+import path from 'path'
 
 //const PUBLIC_ASSETS = path.join(__dirname, '../client/build')
 
