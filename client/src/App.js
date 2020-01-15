@@ -25,8 +25,8 @@ const App = (props) => {
           <AlreadyLoggedRoute path="/login" component={Login} logged={props.user.user._id} />
           <AlreadyLoggedRoute path="/register" component={Register} logged={props.user.user._id} />
           <PrivateRoute path="/dashboard" component={Dashboard} logged={props.user.user._id} />
-          <PrivateRoute path="/post/new" component={NewPost} logged={props.user.user._id} />
-          <Route path="/post" component={Post} />
+          <PrivateRoute path="/posts/new" component={NewPost} logged={props.user.user._id} />
+          <Route path="/post/:id" component={Post} />
         </Switch>
       </Router>
     </div>

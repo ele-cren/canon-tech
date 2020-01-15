@@ -50,7 +50,7 @@ const NewPost = () => {
           'Content-Type': 'application/json'
         }
       })
-      if (response.data.errors.title) {
+      if (response.data.errors && response.data.errors.title) {
         setErrors({ title: Texts[response.data.errors.title] })
       }
     }

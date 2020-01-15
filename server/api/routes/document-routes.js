@@ -12,7 +12,6 @@ router.post('/posts', (req, res) => {
   const imageUrl = req.protocol + '://' + req.get('host') + '/images/' + fileName
   const newReview = new reviewModel({
     review: document.review,
-    authorId: req.user.id,
     rate: document.rate,
     upvotes: 0,
     downvotes: 0
@@ -47,5 +46,15 @@ const uploadPicture = (picture, fileName) => {
   fs.writeFileSync(mypath, base64Data, { encoding: 'base64' })
   return fileName
 }
+
+router.get('/document/:id', (req, res) => {
+  const id = req.params.id
+  return Document.findById(id, (err, doc) => {
+    if (err) {
+      return res.json(err)
+    }
+    return res.json(doc)
+  })
+})
 
 export default router

@@ -2,7 +2,7 @@ import { Schema } from 'mongoose'
 
 const CommentSchema = new Schema({
   comment: String,
-  authorId: Number
+  // User Profile
 }, { timestamps: true })
 
 export default CommentSchema

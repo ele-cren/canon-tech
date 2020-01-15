@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PostHeading from '../components/Post/PostHeading'
 import PostInformations from '../components/Post/PostInformations'
 import PostReviews from '../components/Post/PostReviews'
+import { API_URL } from '../utils/utils.js'
+import axios from 'axios'
 
-const Post = () => {
+const Post = (props) => {
+
+useEffect(() => {
+
+}, [])
+
+
+
+
+
+
+
+
+
+
   const reviews = [
     {
       username: 'Cheb Falzär',
