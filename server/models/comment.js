@@ -2,7 +2,8 @@ import { Schema } from 'mongoose'
 
 const CommentSchema = new Schema({
   comment: String,
-  // User Profile
+  username: String,
+  userPicture: String
 }, { timestamps: true })
 
 export default CommentSchema

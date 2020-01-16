@@ -2,7 +2,8 @@ import mongoose, { Schema } from 'mongoose'
 
 const ReviewSchema = new Schema({
   review: String,
-  //UserProfile
+  username: String,
+  userPicture: String,
   rate: Number,
   upvotes: Number,
   downvotes: Number

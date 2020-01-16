@@ -12,7 +12,8 @@ const UserSchema = new Schema({
     lowercase: true,
     unique: true
   },
-  password: String
+  password: String,
+  userPicture: String
 })
 
 UserSchema.methods.hashPassword = (password) => {

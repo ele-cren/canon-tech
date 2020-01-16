@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, FETCHING, FETCHED, CHECKED } from '../actions/userActions/userConsts'
+import { LOGIN, LOGOUT, UPDATE, FETCHING, FETCHED, CHECKED } from '../actions/userActions/userConsts'
 
 const defaultState = {
   user: {}
@@ -16,6 +16,8 @@ const userReducer = (state = defaultState, action) => {
       return { ...state, checked: true }
     case LOGOUT:
       return { ...state, user: {} }
+    case UPDATE:
+      return { ...state, user: { ...state.user, ...action.payload } }
     default:
       return state
   }

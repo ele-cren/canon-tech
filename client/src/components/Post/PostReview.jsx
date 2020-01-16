@@ -9,9 +9,9 @@ import PostAddArea from './PostAddArea'
 const PostReview = (props) => {
   const [isOpen, setOpen] = useState(false);
   const { review } = props
-  const comments = review.comments.map((x, i) => {
+  const comments = review.comments ? review.comments.map((x, i) => {
     return <PostComment key={i} comment={x} />
-  })
+  }) : []
   return (
     <div className="PostReview__container">
       <div className="PostReview__userinfos-container">

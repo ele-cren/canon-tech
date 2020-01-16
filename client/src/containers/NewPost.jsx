@@ -4,6 +4,7 @@ import NewPostInfos from '../components/NewPost/NewPostInfos'
 import NewPostReview from '../components/NewPost/NewPostReview'
 import axios from 'axios'
 import { API_URL } from '../utils/utils'
+import { Redirect } from 'react-router-dom'
 const Texts = require('../localization/messages.json')
 
 const NewPost = () => {
@@ -20,6 +21,7 @@ const NewPost = () => {
   const [currentGenre, setGenre] = useState('')
   const [cats, setCategories] = useState([])
   const [errors, setErrors] = useState({})
+  const [redirectUrl, setRedirectUrl] = useState('')
 
   const sendPost = async () => {
     const documentData = { 
@@ -52,11 +54,13 @@ const NewPost = () => {
       })
       if (response.data.errors && response.data.errors.title) {
         setErrors({ title: Texts[response.data.errors.title] })
+      } else {
+        setRedirectUrl('/post/' + response.data.document._id)
       }
     }
   }
 
-  return (
+  return redirectUrl ? <Redirect to={redirectUrl} /> : (
     <div className="NewPost__container">
       <h2 className="font-roboto">Nouveau document</h2>
       <NewPostHeading errors={errors} infos={infos} setInfos={setInfos} croppedImg={croppedImg} setCroppedImg={setCroppedImg} />

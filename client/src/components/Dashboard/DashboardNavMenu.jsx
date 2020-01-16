@@ -2,7 +2,6 @@ import React from 'react'
 import classNames from 'classnames'
 
 const DashboardNavMenu = (props) => {
-  console.log(props)
   return (
     <aside className="DashboardNavMenu__container">
       <nav>
