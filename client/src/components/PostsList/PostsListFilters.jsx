@@ -33,7 +33,7 @@ const PostsListFilters = () => {
 
       <div className="PostsList__filters PostsList__filters-whishLists">
         <input type="checkbox" /> À regarder plus tard <br />
-        <input type="checkbox" /> Mes posts préférés <br />
+        <input type="checkbox" /> Mes films préférés <br />
       </div>
 
     </div>

@@ -1,13 +1,17 @@
 import React from 'react'
 import Item from '../Item'
+import { Link } from 'react-router-dom'
 
-const PostsListDisplay = () => {
+const PostsListDisplay = (props) => {
 
-  let items = []
-  for (let i = 0; i < 20; i++) {
-    items = [...items, <Item key={i} img="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Blade_Runner_%281982_poster%29.png/220px-Blade_Runner_%281982_poster%29.png"
-      title="Blade Runner" author="Ridley Scott" />]
-  }
+  const items = props.documents ? props.documents.map((x, i) => {
+    return (
+      <Link to={'/post/' + x._id} style={{ textDecoration: 'none' }}>
+        <Item key={i} img={x.posterUrl} title={x.title} author={x.author} />
+      </Link>
+    )
+  }) : []
+
   return (
     <div className="PostsList__posts-infos-container">
       <div className="PostsList__infos-container">
@@ -18,7 +22,6 @@ const PostsListDisplay = () => {
 
       <div className="PostsList__posts-container">
         {items}
-
       </div>
     </div>
 

@@ -17,7 +17,7 @@ const Dashboard = () => {
     return () => {
       window.removeEventListener('resize', updateWidth)
     }
-  })
+  }, [])
 
   useEffect(() => {
     if (width <= 800) {

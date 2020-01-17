@@ -3,6 +3,7 @@
 }
 
 .PostsList__main-container {
+  width: 100%;
   max-width: 1366px;
   margin: auto auto 5px auto;
   display: flex;
@@ -10,6 +11,7 @@
 }
 
 .PostsList__data-container {
+  width: 100%;
   display: flex;
 }
 .PostsList__filters-container {
@@ -25,10 +27,14 @@
   hr{
     margin-bottom: 10px;
   }
+}
 
+.PostsList__posts-infos-container{
+  width: 100%;
 }
 
 .PostsList__infos-container {
+  width: 97%;
   display: flex;
   font-size: 12px;
   justify-content: space-between;
@@ -69,4 +75,37 @@
 .PostsList__posts-container{
   display: flex;
   flex-wrap: wrap;
+}
+
+.PostsListDisplayBtn__btn {
+  z-index: 10;
+  position: fixed;
+  top: 115px;
+  width: 30px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  background-color: $lightBlue1;
+  color: $lightGrey;
+  border: none;
+  border-radius: 3px;
+  margin: 0;
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+@media (max-width: 350px) {
+  .PostsList__searchbar-container{
+    width: 290px;
+  }
+}
+
+@media (max-width: 650px) {
+  .PostsList__filters-container {
+    position: fixed;
+    max-height: 75vh;
+    overflow: scroll;
+  }
 }

@@ -61,8 +61,16 @@ router.get('/post/:id', (req, res) => {
     if (err) {
       return res.json(err)
     }
-    console.log(JSON.stringify(post, null, "\t"))
     return res.json({ document: post })
+  })
+})
+
+router.get('/posts', (req, res) => {
+  return Document.find((err, docs) => {
+    if (err) {
+      return res.json(err)
+    }
+    return res.json({ documents: docs })
   })
 })
 
