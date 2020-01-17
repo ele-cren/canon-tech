@@ -1,6 +1,4 @@
 import mongoose, { Schema } from 'mongoose'
-import Review from './review'
-import Comment from './comment'
 
 const DocumentSchema = new Schema({
   title: {
@@ -15,8 +13,25 @@ const DocumentSchema = new Schema({
     type: Number
   },
   rate: Number,
-  reviews: [Review],
-  comments: [Comment],
+  reviews: [{
+    review: String,
+    rate: Number,
+    upvotes: Number,
+    downvotes: Number,
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    },
+    postedAt: Date
+  }],
+  comments: {
+    comment: String,
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    },
+    postedAt: Date
+  },
   genre: String,
   categories: [String]
 })

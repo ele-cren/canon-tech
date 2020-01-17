@@ -3,7 +3,6 @@ import fs from 'fs'
 import path from 'path'
 import Document from '../../models/document'
 import User from '../../models/user'
-import { model as reviewModel } from '../../models/review'
 
 const router = express.Router()
 
@@ -16,14 +15,14 @@ router.post('/posts', (req, res) => {
     if (err) {
       return res.json(err)
     }
-    const newReview = new reviewModel({
+    const newReview = {
       review: document.review,
       rate: document.rate,
-      username: user.username,
-      userpicture: user.userPicture,
+      user: req.user._id,
       upvotes: 0,
-      downvotes: 0
-    })
+      downvotes: 0,
+      postedAt: new Date(Date.now())
+    }
     const newDoc = new Document({
       title: document.title,
       author: document.author,
@@ -46,18 +45,6 @@ router.post('/posts', (req, res) => {
       return res.json({ document: doc })
     })
   })
-
-
-
-
-
-
-
-
-
-
-
-  
 })
 
 const uploadPicture = (picture, fileName) => {
@@ -70,11 +57,12 @@ const uploadPicture = (picture, fileName) => {
 
 router.get('/post/:id', (req, res) => {
   const id = req.params.id
-  return Document.findById(id, (err, doc) => {
+  return Document.findById(id).populate({path : 'reviews.user', select: ['username', 'userPicture'], model: 'User'}).exec((err, post) => {
     if (err) {
       return res.json(err)
     }
-    return res.json({ document: doc })
+    console.log(JSON.stringify(post, null, "\t"))
+    return res.json({ document: post })
   })
 })
 

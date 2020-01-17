@@ -16,7 +16,7 @@ const PostReview = (props) => {
     <div className="PostReview__container">
       <div className="PostReview__userinfos-container">
         <img src={UserPicture} alt="User avatar" />
-        <div className="PostReview__username">{review.username}</div>
+        <div className="PostReview__username">{review.user.username}</div>
       </div>
       <div className="PostReview__review">
         {review.review}
