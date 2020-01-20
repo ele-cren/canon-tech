@@ -1,10 +1,42 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Rating from 'react-rating'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons'
+import { connect } from 'react-redux'
+import { updateInfos } from '../../actions/userActions/updateActions'
 
 const PostHeading = (props) => {
+  const [myRate, setMyRate] = useState(0)
+
+  useEffect(() => {
+    if (props.user.user.ratings) {
+      props.user.user.ratings.forEach(x => {
+        if (props.postId === x.docId) {
+          setMyRate(x.rate)
+        }
+      })
+    }
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const updateRate = (value) => {
+    setMyRate(value)
+    let exists = false
+    let newRatings = []
+    if (props.user.user.ratings) {
+      newRatings = props.user.user.ratings.map(x => {
+        if (x.docId === props.postId) {
+          x.rate = value
+          exists = true
+        }
+        return x
+      })
+    }
+    newRatings = !props.user.user.ratings || !exists ? [{ docId: props.postId, rate: value }] : newRatings
+    props.updateUserInfos({ ratings: newRatings })
+  }
+
   return (
     <div className="PostHeading__container">
       <img src={props.img} alt="Document Poster" />
@@ -15,6 +47,8 @@ const PostHeading = (props) => {
           <div className="PostHeading__stars">
             <Rating
               stop={10}
+              initialRating={myRate}
+              onChange={updateRate}
               emptySymbol={<FontAwesomeIcon icon={emptyStar} />}
               fullSymbol={<FontAwesomeIcon icon={faStar} />} />
           </div>
@@ -29,4 +63,15 @@ const PostHeading = (props) => {
   )
 }
 
-export default PostHeading
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+
+const mapDispatchToProps = {
+  updateUserInfos: updateInfos
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostHeading)

@@ -34,7 +34,7 @@ router.post('/posts', (req, res) => {
       reviews: [newReview],
       comments: []
     })
-    return newDoc.save((err, doc) => {
+    return newDoc.save(async (err, doc) => {
       if (err) {
         if (err.name === 'MongoError' && err.code === 11000) {
           return res.json({ errors: { title: 'DocumentExists' } })
@@ -42,6 +42,10 @@ router.post('/posts', (req, res) => {
         return res.json(err)
       }
       uploadPicture(document.posterUrl, fileName)
+      if (doc.rate) {
+        user.ratings = [{ docId: doc._id, rate: doc.rate }]
+        await user.save()
+      }
       return res.json({ document: doc })
     })
   })
@@ -72,6 +76,20 @@ router.get('/posts', (req, res) => {
     }
     return res.json({ documents: docs })
   })
+})
+
+router.patch('/post/:id', (req, res) => {
+  const { id } = req.params
+  if (req.user.id) {
+    const docInfos = JSON.parse(req.body.docInfos)
+    return Document.findByIdAndUpdate({ _id: id }, { $set: docInfos }, (err, doc) => {
+      if (err) {
+        return res.json(err)
+      }
+      return res.json({ document: doc })
+    })
+  }
+  return res.json({ error: 'Not authorized' })
 })
 
 export default router

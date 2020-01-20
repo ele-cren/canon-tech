@@ -7,14 +7,17 @@ import axios from 'axios'
 
 const Post = (props) => {
   const [post, setPost] = useState(null) 
+  const [isLoading, setLoading] = useState(false)
 
   useEffect(() => {
     const getPost = async () => {
       const { id } = props.match.params
+      setLoading(true)
       const response = await axios.get(API_URL + '/post/' + id)
       if (response.data.document) {
         setPost(response.data.document)
       }
+      setLoading(false)
     }
     getPost()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -22,9 +25,10 @@ const Post = (props) => {
 
   return (
     <div className="Post__container">
-      {post ? (
+      {isLoading ? <div>Chargement en cours...</div> : post ? (
         <>
         <PostHeading
+          postId={props.match.params.id}
           img={post.posterUrl}
           title={post.title}
           year={post.year}

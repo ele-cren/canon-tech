@@ -19,6 +19,11 @@
     box-shadow: $boxShadow;
     padding-left: 10px;
   }
+
+  .DashboardFormInfos__error {
+    margin-top: 5px;
+    color: #ff090f;
+  }
 }
 .DashboardFormInfos__btn-container {
   width: 100%;

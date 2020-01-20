@@ -16,7 +16,7 @@ const App = (props) => {
     props.isAuthenticated()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  return !props.user.checked ? 'Loading...' : (
+  return !props.user.checked ? 'Chargement en cours...' : (
     <div className="TechCanon">
       <Router>
         <Navbar logged={props.user.user._id} />

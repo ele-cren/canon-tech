@@ -13,6 +13,9 @@
     padding: 10px;
     .ModalPicture_picture-container {
       text-align: center;
+      .ReactCrop__image {
+        max-height: 80vh;
+      }
     }
     .ModalPicture__btn-container {
       display: flex;

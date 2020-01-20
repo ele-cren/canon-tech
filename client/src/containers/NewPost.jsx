@@ -55,6 +55,7 @@ const NewPost = () => {
       if (response.data.errors && response.data.errors.title) {
         setErrors({ title: Texts[response.data.errors.title] })
       } else {
+        // SAVE DOC RATE TO STATE USER
         setRedirectUrl('/post/' + response.data.document._id)
       }
     }

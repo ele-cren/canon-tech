@@ -6,8 +6,8 @@ const PostsListDisplay = (props) => {
 
   const items = props.documents ? props.documents.map((x, i) => {
     return (
-      <Link to={'/post/' + x._id} style={{ textDecoration: 'none' }}>
-        <Item key={i} img={x.posterUrl} title={x.title} author={x.author} />
+      <Link key={i} to={'/post/' + x._id} style={{ textDecoration: 'none' }}>
+        <Item img={x.posterUrl} title={x.title} author={x.author} />
       </Link>
     )
   }) : []
