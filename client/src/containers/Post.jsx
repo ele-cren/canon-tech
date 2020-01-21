@@ -4,6 +4,7 @@ import PostInformations from '../components/Post/PostInformations'
 import PostReviews from '../components/Post/PostReviews'
 import { API_URL } from '../utils/utils.js'
 import axios from 'axios'
+import { connect } from 'react-redux'
 
 const Post = (props) => {
   const [post, setPost] = useState(null) 
@@ -23,16 +24,38 @@ const Post = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const updateRate = (rate) => {
+    const { id } = props.match.params
+    let exists = false
+    let newRates = post.ratings ? post.ratings.map(x => {
+      if (x.rater === props.user.user._id) {
+        exists = true
+        x.rate = rate
+      }
+      return x
+    }) : []
+    newRates = newRates ? exists ? newRates : [...newRates, { rate: rate, rater: props.user.user._id }]
+              : [{ rate: rate, rater: props.user.user._id }]
+    setPost({ ...post, ratings: newRates })
+    axios.patch(API_URL + '/post/' + id, { docInfos: JSON.stringify({ ratings: newRates }) }, { 
+      headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+      }
+    })
+  }
+
   return (
     <div className="Post__container">
       {isLoading ? <div>Chargement en cours...</div> : post ? (
         <>
         <PostHeading
+          updateRate={updateRate}
           postId={props.match.params.id}
           img={post.posterUrl}
           title={post.title}
           year={post.year}
-          note={post.rate}
+          rates={post.ratings}
           author={post.author} />
         <PostInformations genre={post.genre} categories={post.categories} />
         <PostReviews reviews={post.reviews} />
@@ -44,4 +67,10 @@ const Post = (props) => {
   )
 }
 
-export default Post
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps, {})(Post)

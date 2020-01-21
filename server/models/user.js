@@ -15,11 +15,7 @@ const UserSchema = new Schema({
   firstName: String,
   lastName: String,
   password: String,
-  userPicture: String,
-  ratings: [{
-    docId: String,
-    rate: Number
-  }]
+  userPicture: String
 })
 
 UserSchema.methods.hashPassword = (password) => {

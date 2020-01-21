@@ -14,11 +14,11 @@ const PostsListDisplay = (props) => {
 
   return (
     <div className="PostsList__posts-infos-container">
-      <div className="PostsList__infos-container">
+      {/* <div className="PostsList__infos-container">
         <p> 20 oeuvres</p>
         <p> afficher 25 - 50 - 100</p>
         <p>menu filtre</p>
-      </div>
+      </div> */}
 
       <div className="PostsList__posts-container">
         {items}

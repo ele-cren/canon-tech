@@ -12,7 +12,13 @@ const DocumentSchema = new Schema({
   year: {
     type: Number
   },
-  rate: Number,
+  ratings: [{
+    rate: Number,
+    rater: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }
+  }],
   reviews: [{
     review: String,
     rate: Number,

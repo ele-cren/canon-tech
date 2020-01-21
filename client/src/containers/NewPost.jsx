@@ -2,12 +2,14 @@ import React, { useState, useReducer } from 'react'
 import NewPostHeading from '../components/NewPost/NewPostHeading'
 import NewPostInfos from '../components/NewPost/NewPostInfos'
 import NewPostReview from '../components/NewPost/NewPostReview'
+import { connect } from 'react-redux'
+import { updateInfos } from '../actions/userActions/updateActions'
 import axios from 'axios'
 import { API_URL } from '../utils/utils'
 import { Redirect } from 'react-router-dom'
 const Texts = require('../localization/messages.json')
 
-const NewPost = () => {
+const NewPost = (props) => {
   const [infos, setInfos] = useReducer(
     (state, newState) => ({ ...state, ...newState }), {
       title: '',
@@ -31,20 +33,7 @@ const NewPost = () => {
       posterUrl: croppedImg
     }
     if (!documentData.title || !documentData.author || !documentData.year || !documentData.posterUrl) {
-      let errors = {}
-      if (!documentData.title) {
-        errors = { ...errors, title: 'Veuillez entrer un titre' }
-      }
-      if (!documentData.year) {
-        errors = { ...errors, year: 'Veuillez entrer une année' }
-      }
-      if (!documentData.author) {
-        errors = { ...errors, author: 'Veuillez entrer un/des auteur(s)' }
-      }
-      if (!documentData.posterUrl) {
-        errors = { ...errors, poster: 'Veuillez choisir une image' }
-      }
-      setErrors(errors)
+      validateForm(documentData)
     } else {
       const response = await axios.post(API_URL + '/posts', { document: JSON.stringify(documentData) }, {
         headers: {
@@ -55,10 +44,26 @@ const NewPost = () => {
       if (response.data.errors && response.data.errors.title) {
         setErrors({ title: Texts[response.data.errors.title] })
       } else {
-        // SAVE DOC RATE TO STATE USER
         setRedirectUrl('/post/' + response.data.document._id)
       }
     }
+  }
+
+  const validateForm = (documentData) => {
+    let errors = {}
+    if (!documentData.title) {
+      errors = { ...errors, title: 'Veuillez entrer un titre' }
+    }
+    if (!documentData.year) {
+      errors = { ...errors, year: 'Veuillez entrer une année' }
+    }
+    if (!documentData.author) {
+      errors = { ...errors, author: 'Veuillez entrer un/des auteur(s)' }
+    }
+    if (!documentData.posterUrl) {
+      errors = { ...errors, poster: 'Veuillez choisir une image' }
+    }
+    setErrors(errors)
   }
 
   return redirectUrl ? <Redirect to={redirectUrl} /> : (
@@ -74,4 +79,14 @@ const NewPost = () => {
   )
 }
 
-export default NewPost
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+const mapDispatchToProps = {
+  updateInfos: updateInfos
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewPost)

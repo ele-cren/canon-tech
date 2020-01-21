@@ -27,14 +27,14 @@ router.post('/posts', (req, res) => {
       title: document.title,
       author: document.author,
       year: document.year,
-      rate: document.rate,
+      ratings: [{ rate: document.rate, rater: req.user._id }],
       posterUrl: imageUrl,
       genre: document.genre,
       categories: document.categories,
       reviews: [newReview],
       comments: []
     })
-    return newDoc.save(async (err, doc) => {
+    return newDoc.save((err, doc) => {
       if (err) {
         if (err.name === 'MongoError' && err.code === 11000) {
           return res.json({ errors: { title: 'DocumentExists' } })
@@ -42,10 +42,6 @@ router.post('/posts', (req, res) => {
         return res.json(err)
       }
       uploadPicture(document.posterUrl, fileName)
-      if (doc.rate) {
-        user.ratings = [{ docId: doc._id, rate: doc.rate }]
-        await user.save()
-      }
       return res.json({ document: doc })
     })
   })
