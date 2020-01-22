@@ -6,6 +6,7 @@
     width: 150px;
   }
   .DashboardReview__review {
+    width: 100%;
     margin-left: 5px;
     padding: 10px;
     background-color: $white;
@@ -16,6 +17,8 @@
     }
     .DashboardReview__overflow-handler {
       position: absolute;
+      text-decoration: none;
+      color: black;
       bottom: 0;
       height: 30px;
       width: 100%;

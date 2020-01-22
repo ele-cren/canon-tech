@@ -5,21 +5,25 @@ import axios from 'axios'
 import { API_URL } from '../../utils/utils.js'
 
 const DashboardReviews = (props) => {
+  const [postReviews, setPostReviews] = useState([])
 
   useEffect(() => {
-    const getReviews = () => {
-      
+    const getReviews = async () => {
+      const response = await axios.get(API_URL + '/post/reviews/' + props.user.user._id)
+      if (response.data.documents) {
+        setPostReviews(response.data.documents)
+      }
     }
 
     getReviews();
-  })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-  let reviewText = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. N'
   let reviews = []
-  for (let i = 0; i < 3; i++) {
-    reviews = [...reviews, <DashboardReview key={i}
-      title={'Blade Runner'} review={reviewText}
-      img="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Blade_Runner_%281982_poster%29.png/220px-Blade_Runner_%281982_poster%29.png" />]
+  if (postReviews) {
+    reviews = postReviews.map((x, i) => {
+      return <DashboardReview key={i} id={x._id} review={x.reviews[0].review} img={x.posterUrl} />
+    })
   }
   return (
     <div className="DashboardReviews__container">

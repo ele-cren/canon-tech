@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const DashboardReview = (props) => {
   return (
@@ -8,7 +9,7 @@ const DashboardReview = (props) => {
         <div className="DashboardReview__review">
           <div className="DashboardReview__title">{props.title}</div>
           {props.review}
-          <div className="DashboardReview__overflow-handler">Lire</div>
+          <Link to={'/post/' + props.id} className="DashboardReview__overflow-handler">Lire</Link>
         </div>
       </div>
     </>
