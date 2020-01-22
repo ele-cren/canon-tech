@@ -21,8 +21,10 @@ const PostHeading = (props) => {
   }, [])
 
   const updateRate = (value) => {
-    setMyRate(value)
-    props.updateRate(value)
+    if (props.user.user._id) {
+      setMyRate(value)
+      props.updateRate(value)
+    }
   }
 
   let note = 0

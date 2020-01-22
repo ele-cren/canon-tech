@@ -19,6 +19,9 @@ const PostsListDisplay = (props) => {
         <p> afficher 25 - 50 - 100</p>
         <p>menu filtre</p>
       </div> */}
+      <div className="PostList__btn-container">
+        <Link to="/posts/new">Nouveau document</Link>
+      </div>
 
       <div className="PostsList__posts-container">
         {items}

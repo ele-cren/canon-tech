@@ -77,6 +77,22 @@
   flex-wrap: wrap;
 }
 
+.PostList__btn-container {
+  a {
+    color: white;
+    background-color: $green1;
+    width: 200px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 3px;
+    box-shadow: $boxShadow;
+    margin-left: 5px;
+  }
+}
+
 .PostsListDisplayBtn__btn {
   z-index: 10;
   position: fixed;

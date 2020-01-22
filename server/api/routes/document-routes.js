@@ -88,4 +88,14 @@ router.patch('/post/:id', (req, res) => {
   return res.json({ error: 'Not authorized' })
 })
 
+router.get('/post/reviews/:id', (req, res) => {
+  const { id } = req.params
+  Document.find({ 'reviews.user': id }, 'reviews.review posterUrl', (err, docs) => {
+    if (err) {
+      return res.json(err)
+    }
+    return res.json({ documents: docs })
+  })
+})
+
 export default router
