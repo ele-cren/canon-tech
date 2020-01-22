@@ -24,6 +24,47 @@ const Post = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const addReview = (review) => {
+    let reviewRate = 0
+    const { id } = props.match.params
+    let exists = false
+
+    if (post.reviews) {
+      for (let rev of post.reviews) {
+        if (rev.user._id === props.user.user._id) {
+          exists = true
+          break
+        }
+      }
+    }
+
+    if (!exists) {
+      if (post.ratings) {
+        for (const rate of post.ratings) {
+          if (rate.rater === props.user.user._id) {
+            reviewRate = rate.rate
+            break
+          }
+        }
+      }
+  
+      const newReview = {
+        review: review,
+        rate: reviewRate,
+        user: props.user.user._id
+      }
+      const newReviews = post.reviews ? [...post.reviews, newReview] : [newReview]
+  
+      setPost({ ...post, reviews: newReviews })
+      axios.patch(API_URL + '/post/' + id, { docInfos: JSON.stringify({ reviews: newReviews }) }, { 
+        headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        }
+      }) 
+    }
+  }
+
   const updateRate = (rate) => {
     const { id } = props.match.params
     let exists = false
@@ -58,7 +99,7 @@ const Post = (props) => {
           rates={post.ratings}
           author={post.author} />
         <PostInformations genre={post.genre} categories={post.categories} />
-        <PostReviews reviews={post.reviews} />
+        <PostReviews addReview={addReview} reviews={post.reviews} />
         </>
       ) : (
         <div>Aucun document n'a été trouvé</div>

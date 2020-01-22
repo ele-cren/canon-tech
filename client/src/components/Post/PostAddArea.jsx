@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const PostAddArea = (props) => {
+  const [comment, setComment] = useState('')
+
+  const addPost = (event) => {
+    event.preventDefault()
+    props.callback(comment)
+    setComment('')
+  }
+
   return (
-    <form className="PostAddArea__container">
-      <textarea />
+    <form className="PostAddArea__container" onSubmit={addPost}>
+      <textarea value={comment} onChange={(e) => setComment(e.target.value)} />
       <button type="submit">{props.btn}</button>
     </form>
   )

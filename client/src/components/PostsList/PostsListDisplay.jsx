@@ -1,6 +1,7 @@
 import React from 'react'
 import Item from '../Item'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 const PostsListDisplay = (props) => {
 
@@ -19,9 +20,11 @@ const PostsListDisplay = (props) => {
         <p> afficher 25 - 50 - 100</p>
         <p>menu filtre</p>
       </div> */}
-      <div className="PostList__btn-container">
-        <Link to="/posts/new">Nouveau document</Link>
-      </div>
+      { props.user.user._id && (
+        <div className="PostList__btn-container">
+          <Link to="/posts/new">Nouveau document</Link>
+        </div>
+      )}
 
       <div className="PostsList__posts-container">
         {items}
@@ -31,4 +34,10 @@ const PostsListDisplay = (props) => {
   )
 }
 
-export default PostsListDisplay
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps, {})(PostsListDisplay)

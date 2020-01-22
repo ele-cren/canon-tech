@@ -15,14 +15,14 @@ router.post('/posts', (req, res) => {
     if (err) {
       return res.json(err)
     }
-    const newReview = {
+    const newReview = document.review ? {
       review: document.review,
       rate: document.rate,
       user: req.user._id,
       upvotes: 0,
       downvotes: 0,
       postedAt: new Date(Date.now())
-    }
+    } : null
     const newDoc = new Document({
       title: document.title,
       author: document.author,
@@ -31,7 +31,7 @@ router.post('/posts', (req, res) => {
       posterUrl: imageUrl,
       genre: document.genre,
       categories: document.categories,
-      reviews: [newReview],
+      reviews: newReview ? [newReview] : [],
       comments: []
     })
     return newDoc.save((err, doc) => {
