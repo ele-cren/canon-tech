@@ -3,11 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "12.13.1"
+  },
   "scripts": {
     "server": "nodemon --exec babel-node server/app.js",
     "client": "cd client && npm start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "start": "node server/app.js"
+    "build-server": "npx babel server --out-dir build",
+    "start": "node build/app.js",
+    "heroku-postbuild": "npm install && npm run build server && cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",

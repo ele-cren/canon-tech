@@ -11,7 +11,7 @@ import cors from 'cors'
 require('dotenv').config()
 import path from 'path'
 
-//const PUBLIC_ASSETS = path.join(__dirname, '../client/build')
+const PUBLIC_ASSETS = path.join(__dirname, '../client/build')
 
 class Server {
   constructor () {
@@ -20,7 +20,7 @@ class Server {
 
   configure () {
     this.app = express()
-    //this.app.use(express.static(PUBLIC_ASSETS))
+    this.app.use(express.static(PUBLIC_ASSETS))
     this.app.use(cors())
     this.app.use(bodyParser.urlencoded({
       extended: true,
