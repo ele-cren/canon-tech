@@ -19,6 +19,9 @@ class Api {
     this.app.use('/api', DocumentRoutes)
     this.app.use('/api/user', UserRoutes)
     this.app.use('/images', express.static(imagesPath))
+    this.app.get('/*', (req, res) => {
+      res.sendFile(path.join(__dirname, '../../client/build/index.html'))
+    })
   }
 }
 
