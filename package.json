@@ -12,7 +12,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build-server": "npx babel server --out-dir build",
     "start": "node build/app.js",
-    "heroku-postbuild": "npm install && npm run build-server && mkdir build/images && cd client && npm install && npm run build"
+    "heroku-postbuild": "rm -rf build && rm -rf client/build && npm install && npm run build-server && mkdir build/images && cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
