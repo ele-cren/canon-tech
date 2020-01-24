@@ -12,7 +12,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build-server": "npx babel server --out-dir build",
     "start": "node build/app.js",
-    "heroku-postbuild": "if [ -d \"build/images\" ]; then cp -r build/images . ; fi && rm -rf build && rm -rf client/build && npm install && npm run build-server && if [ -d \"./images\" ]; then cp -r./images build ; fi && mkdir build/images && cd client && npm install && npm run build"
+    "heroku-postbuild": "if [ -d \"build/images\" ]; then cp -r build/images . ; fi && rm -rf build && rm -rf client/build && npm install && npm run build-server && if [ -d \"./images\" ]; then cp -r ./images build ; fi && mkdir build/images && cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
