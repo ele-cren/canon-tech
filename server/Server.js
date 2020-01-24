@@ -24,7 +24,10 @@ class Server {
     this.app.use(cors())
     this.app.use(bodyParser.urlencoded({
       extended: true,
-      limit: '5mb'
+      limit: '10mb'
+    }))
+    this.app.use(bodyParser.json({
+      limit: '10mb'
     }))
     this.app.use(cookieParser(process.env.SESSION_SECRET))
     this.app.use(bodyParser.json())
