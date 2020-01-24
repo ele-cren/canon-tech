@@ -26,7 +26,7 @@ const Navbar = (props) => {
   }
 
   useEffect(() => {
-    if (width <= 465) {
+    if (width <= 485) {
       if (!isMobile) {
         setMobile(true)
       }

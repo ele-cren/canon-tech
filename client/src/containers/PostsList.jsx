@@ -9,12 +9,12 @@ import { API_URL } from '../utils/utils'
 
 const PostsList = () => {
   const [documents, setDocuments] = useState([])
-  const [width, setWidth] = useState(0)
+  const [width, setWidth] = useState(window.innerWidth)
   const [isMobile, setMobile] = useState(false)
   const [isMenuOpened, setMenu] = useState(false)
 
   useEffect(() => {
-    updateWidth()
+    updateWidth();
     window.addEventListener('resize', updateWidth)
     return () => {
       window.removeEventListener('resize', updateWidth)
@@ -47,7 +47,7 @@ const PostsList = () => {
     }
     getDocuments()
   }, [])
-
+  
   return (
     <div className="PostsList__container">
       <div className="PostsList__main-container">
