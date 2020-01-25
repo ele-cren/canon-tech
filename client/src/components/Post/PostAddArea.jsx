@@ -5,8 +5,10 @@ const PostAddArea = (props) => {
 
   const addPost = (event) => {
     event.preventDefault()
-    props.callback(comment)
-    setComment('')
+    if (comment) {
+      props.callback(comment)
+      setComment('')
+    }
   }
 
   return (
